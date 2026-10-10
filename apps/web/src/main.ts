@@ -5,6 +5,7 @@ import { detenerReloj } from "./estado";
 import { codigoPartida, crearPartida, panelDocente } from "./vistas/docente";
 import { devs } from "./vistas/devs";
 import { entrar } from "./vistas/entrar";
+import { conformarEquipos } from "./vistas/equipos";
 import { decision, ingresoEstudiante, resultados, salaEspera } from "./vistas/estudiante";
 import { fichaPais } from "./vistas/ficha";
 import { inicio } from "./vistas/inicio";
@@ -18,6 +19,7 @@ const rutas: Record<string, Vista> = {
   devs,
   "docente/crear": crearPartida,
   "docente/codigo": codigoPartida,
+  "docente/equipos": conformarEquipos,
   "docente/panel": panelDocente,
   estudiante: ingresoEstudiante,
   "estudiante/espera": salaEspera,
