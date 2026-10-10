@@ -5,16 +5,25 @@ const EQUIPO: { nombre: string; rol: string; frase: string }[] = [
   {
     nombre: "Luciana Chacón Castillo",
     rol: "Product Owner",
-    frase: "Decide qué entra primero en cada sprint.",
+    frase: "Organiza el sprint.",
   },
   {
     nombre: "Nahomy González Jiménez",
     rol: "Scrum Master",
-    frase: "Mantiene al equipo avanzando y sin bloqueos.",
+    frase: "Mantiene al equipo enfocado en la meta.",
   },
-  { nombre: "Integrante 3", rol: "Desarrollo", frase: "Completar nombre y una frase corta." },
-  { nombre: "Integrante 4", rol: "Desarrollo", frase: "Completar nombre y una frase corta." },
-  { nombre: "Integrante 5", rol: "Desarrollo", frase: "Completar nombre y una frase corta." },
+  { nombre: "Anthony Piña Sandoval",
+    rol: "Desarrollo", 
+    frase: "Validar funcionalidades." 
+  },
+  { nombre: "Isaac Aburto Torres", 
+    rol: "Desarrollo", 
+    frase: "Encargado del apartado de diseño."
+  },
+  { nombre: "Jafeth Peña Espinoza", 
+    rol: "Desarrollo", 
+    frase: "Logica de negocio en el sistema."
+  },
 ];
 
 const iniciales = (n: string): string =>
@@ -42,7 +51,10 @@ export function devs(app: HTMLElement): void {
     </div>
     <div class="curso">
       <i class="bi bi-mortarboard" aria-hidden="true"></i>
-      <p>EIF409 Aplicaciones Informáticas Globales, II Ciclo 2026. Universidad Nacional, Sede Regional Chorotega, Campus Liberia.
+      <p>EIF409 Aplicaciones Informáticas Globales,</p>
+      <p>Universidad Nacional, Sede Regional Chorotega, Campus Liberia.</p>
+      <p>Docente: MBA. Ariela Moraga Marchena.</p>
+    </div>
         Docente: MBA. Ariela Moraga Marchena.</p>
     </div>
     <div class="acciones">
