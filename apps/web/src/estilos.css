@@ -1048,3 +1048,30 @@ td .mal {
     transition: none !important;
   }
 }
+
+/* Tablas: los montos no se parten en dos líneas */
+td.num,
+th.num {
+  white-space: nowrap;
+}
+
+/* Eventos de mercado (RF-13) */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.eventos { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; }
+.evento-opcion { position: relative; cursor: pointer; }
+.evento-opcion input { position: absolute; opacity: 0; }
+.evento-opcion span { display: grid; gap: 0.25rem; height: 100%; padding: 0.9rem 1rem; border: 1.5px solid var(--linea); border-radius: var(--radio); background: #fff; color: var(--tinta-suave); font-size: 0.92rem; }
+.evento-opcion .bi { font-size: 1.4rem; color: var(--aqua); }
+.evento-opcion strong { color: var(--tinta); }
+.evento-opcion input:checked + span { border-color: var(--jade); background: #e6f2ef; }
+.evento-opcion input:focus-visible + span { outline: 3px solid var(--aqua); outline-offset: 2px; }
+.aviso-evento { display: flex; gap: 0.9rem; align-items: flex-start; margin: 1rem 0; padding: 1rem 1.2rem; border-radius: var(--radio); background: #e3f2f8; border: 1.5px solid var(--celeste); }
+.aviso-evento > .bi { font-size: 1.6rem; color: #12739a; }
+.aviso-evento p { margin: 0.2rem 0 0; }
+.aviso-evento.afecta { background: #fff3e2; border-color: #e9c48a; }
+.afecta-texto { font-weight: 600; }
+
+/* Alias conectados (pantalla del código) */
+.alias-conectados { list-style: none; padding: 0; margin: 0 0 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.alias-conectados li { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.35rem 0.8rem; border-radius: 999px; background: var(--fondo); }
+.alias-conectados .bi { color: var(--aqua); }

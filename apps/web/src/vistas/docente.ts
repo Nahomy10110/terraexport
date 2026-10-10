@@ -1,8 +1,9 @@
-// RF-03 crear partida, código de acceso y RF-05 panel de la ronda.
-import { calcular } from "@terraexport/motor";
+// RF-03 crear partida, código de acceso (alias conectados) y RF-05 panel de la ronda.
 import { D, pais, producto } from "../datos";
 import { $, campo, ir, marcados } from "../dom";
-import { EQUIPOS, estado, partidaActual, type Partida } from "../estado";
+import { ALIAS_DEMO, EQUIPOS, estado, nuevaPartida, partidaActual, type Partida } from "../estado";
+import { EVENTOS, avisoEvento } from "../eventos";
+import { cerrarRonda, siguienteRonda } from "../simulacion";
 import { esc, mmss, usd } from "../formato";
 
 export function crearPartida(app: HTMLElement): void {
@@ -16,19 +17,9 @@ export function crearPartida(app: HTMLElement): void {
       ${campoNum("capital", "Capital inicial por equipo (USD)", a.capital, 1000, 1000000, "Mismo monto para todos los equipos.")}
     </div>`;
   } else if (a.paso === 2) {
-    cuerpo = grupoChips(
-      "pais",
-      "Mercados disponibles en la partida",
-      D.paises.map((p) => [p.iso, p.nombre]),
-      a.paises,
-    );
+    cuerpo = grupoChips("pais", "Mercados disponibles en la partida", D.paises.map((p) => [p.iso, p.nombre]), a.paises);
   } else {
-    cuerpo = grupoChips(
-      "prod",
-      "Productos que podrán exportar",
-      D.productos.map((p) => [p.id, p.nombre]),
-      a.productos,
-    );
+    cuerpo = grupoChips("prod", "Productos que podrán exportar", D.productos.map((p) => [p.id, p.nombre]), a.productos);
   }
 
   app.innerHTML = `
@@ -80,7 +71,7 @@ export function crearPartida(app: HTMLElement): void {
       crearPartida(app);
       return;
     }
-    estado.partida = {
+    estado.partida = nuevaPartida({
       codigo: `TRX${1000 + Math.floor(Math.random() * 9000)}`,
       rondas: a.rondas,
       duracion: a.duracion,
@@ -88,10 +79,7 @@ export function crearPartida(app: HTMLElement): void {
       paises: [...a.paises],
       productos: [...a.productos],
       equipos: [],
-      ronda: 1,
-      rondaEstado: "espera",
-      restante: a.duracion * 60,
-    };
+    });
     a.paso = 1;
     ir("docente/codigo");
   });
@@ -103,12 +91,7 @@ function campoNum(n: string, l: string, v: number, min: number, max: number, ayu
     <span class="ayuda">${ayuda}</span></div>`;
 }
 
-function grupoChips(
-  grupo: string,
-  leyenda: string,
-  opciones: [string, string][],
-  elegidos: string[],
-): string {
+function grupoChips(grupo: string, leyenda: string, opciones: [string, string][], elegidos: string[]): string {
   return `<fieldset class="campo"><legend>${leyenda}</legend><p class="ayuda">Elija al menos 2.</p><div class="chips">
     ${opciones
       .map(
@@ -126,34 +109,35 @@ export function codigoPartida(app: HTMLElement): void {
         <div class="valor" aria-live="polite">${p.codigo.slice(0, 3)} ${p.codigo.slice(3)}</div>
         <p>Los estudiantes entran en <strong>${esc(location.host || "terraexport")}</strong> con este código y un alias.</p>
       </div>
-      <div class="panel"><h2>Equipos conectados</h2><ul class="lista-equipos" id="eq"></ul>
-        <p class="nota-proto">Prototipo: los equipos se conectan solos cada pocos segundos para simular la clase.</p>
-        <div class="acciones"><button class="btn" id="iniciar">Iniciar ronda 1</button></div>
+      <div class="panel"><h2>Estudiantes conectados <span id="cuenta"></span></h2>
+        <ul class="alias-conectados" id="alias"></ul>
+        <p class="nota-proto">Prototipo: los alias se conectan solos cada pocos segundos para simular la clase.</p>
+        <div class="acciones"><button class="btn" id="equipos">Conformar equipos</button></div>
       </div>
     </div>`;
   const pintar = (): void => {
-    $("eq").innerHTML = p.equipos.length
-      ? p.equipos.map((e) => `<li><span>Equipo ${e}</span><span>conectado</span></li>`).join("")
-      : "<li><span>Esperando al primer equipo…</span></li>";
+    const lista = Object.keys(p.integrantes);
+    $("cuenta").textContent = `(${lista.length})`;
+    $("alias").innerHTML = lista.length
+      ? lista.map((a) => `<li><i class="bi bi-person-circle" aria-hidden="true"></i>${esc(a)}</li>`).join("")
+      : "<li>Esperando al primer estudiante…</li>";
   };
   pintar();
   estado.reloj = window.setInterval(() => {
-    const siguiente = EQUIPOS[p.equipos.length];
-    if (p.equipos.length < 4 && siguiente) {
-      p.equipos.push(siguiente);
+    const siguiente = ALIAS_DEMO.find((a) => !(a in p.integrantes));
+    if (siguiente && Object.keys(p.integrantes).length < ALIAS_DEMO.length) {
+      p.integrantes[siguiente] = "";
       pintar();
     }
-  }, 1800);
-  $("iniciar").addEventListener("click", () => {
-    if (!p.equipos.length) p.equipos = EQUIPOS.slice(0, 4);
-    p.rondaEstado = "activa";
-    p.restante = p.duracion * 60;
-    ir("docente/panel");
+  }, 900);
+  $("equipos").addEventListener("click", () => {
+    if (Object.keys(p.integrantes).length < 2) for (const a of ALIAS_DEMO.slice(0, 8)) p.integrantes[a] ??= "";
+    ir("docente/equipos");
   });
 }
 
 const ETIQUETAS = {
-  espera: "Ronda en espera",
+  espera: "Ronda lista para iniciar",
   activa: "Ronda en curso",
   pausada: "Ronda en pausa",
   cerrada: "Ronda cerrada",
@@ -161,32 +145,50 @@ const ETIQUETAS = {
 
 export function panelDocente(app: HTMLElement): void {
   const p = partidaActual();
-  if (p.rondaEstado === "espera") p.rondaEstado = "activa";
+  if (!p.equipos.length) p.equipos = EQUIPOS.slice(0, 4);
+  const ultima = p.ronda === p.rondas;
   app.innerHTML = `
     <h1>Ronda ${p.ronda} de ${p.rondas}</h1>
     <div class="dos-col">
       <div class="panel"><p class="estado-ronda" data-estado="${p.rondaEstado}">${ETIQUETAS[p.rondaEstado]}</p>
         <div class="reloj" id="reloj" role="timer" aria-live="off">${mmss(p.restante)}</div>
         <div class="acciones">
+          ${p.rondaEstado === "espera" ? `<button class="btn" id="iniciar">Iniciar ronda ${p.ronda}</button>` : ""}
           ${p.rondaEstado === "activa" ? '<button class="btn claro" id="pausar">Pausar ronda</button>' : ""}
           ${p.rondaEstado === "pausada" ? '<button class="btn" id="reanudar">Reanudar ronda</button>' : ""}
-          ${p.rondaEstado !== "cerrada" ? '<button class="btn peligro" id="cerrar">Cerrar ronda y calcular</button>' : ""}
-          ${p.rondaEstado === "cerrada" && p.ronda < p.rondas ? `<button class="btn" id="siguiente">Iniciar ronda ${p.ronda + 1}</button>` : ""}
+          ${p.rondaEstado === "activa" || p.rondaEstado === "pausada" ? '<button class="btn peligro" id="cerrar">Cerrar ronda y calcular</button>' : ""}
+          ${p.rondaEstado === "cerrada" ? '<a class="btn claro" href="#/ranking"><i class="bi bi-trophy" aria-hidden="true"></i>Ver ranking</a>' : ""}
+          ${p.rondaEstado === "cerrada" && !ultima ? `<button class="btn" id="siguiente">Preparar ronda ${p.ronda + 1}</button>` : ""}
+          ${p.rondaEstado === "cerrada" && ultima ? '<a class="btn" href="#/docente/reporte"><i class="bi bi-file-earmark-text" aria-hidden="true"></i>Ver reporte final</a>' : ""}
+          ${p.historial.length && !(p.rondaEstado === "cerrada" && ultima) ? '<a class="btn claro" href="#/docente/reporte">Ver historial</a>' : ""}
         </div>
       </div>
       <div class="panel"><h2>Decisiones recibidas</h2><ul class="lista-equipos">
         ${p.equipos
-          .map(
-            (e, i) =>
-              `<li><span>Equipo ${e}</span><span>${p.rondaEstado === "cerrada" || i < 2 ? "registrada" : "pendiente"}</span></li>`,
-          )
-          .join("")}
+      .map(
+        (e, i) =>
+          `<li><span>Equipo ${esc(e)}</span><span>${p.rondaEstado === "espera"
+            ? "esperando inicio"
+            : p.rondaEstado === "cerrada" || i < 2
+              ? "registrada"
+              : "pendiente"
+          }</span></li>`,
+      )
+      .join("")}
       </ul></div>
     </div>
+    ${p.rondaEstado === "espera" ? selectorEvento(p) : avisoEvento(p.evento)}
     ${p.rondaEstado === "cerrada" ? tablaEquipos(p) : ""}`;
 
-  const accion = (id: string, fn: () => void): void =>
-    document.getElementById(id)?.addEventListener("click", fn);
+  const accion = (id: string, fn: () => void): void => document.getElementById(id)?.addEventListener("click", fn);
+  app
+    .querySelectorAll<HTMLInputElement>("input[name=evento]")
+    .forEach((r) => r.addEventListener("change", () => (p.evento = r.value)));
+  accion("iniciar", () => {
+    p.rondaEstado = "activa";
+    p.restante = p.duracion * 60;
+    panelDocente(app);
+  });
   accion("pausar", () => {
     p.rondaEstado = "pausada";
     panelDocente(app);
@@ -197,14 +199,12 @@ export function panelDocente(app: HTMLElement): void {
   });
   accion("cerrar", () => {
     if (confirm("¿Cerrar la ronda? Los equipos ya no podrán cambiar su decisión.")) {
-      p.rondaEstado = "cerrada";
+      cerrarRonda(p);
       panelDocente(app);
     }
   });
   accion("siguiente", () => {
-    p.ronda++;
-    p.rondaEstado = "activa";
-    p.restante = p.duracion * 60;
+    siguienteRonda(p);
     panelDocente(app);
   });
 
@@ -214,7 +214,7 @@ export function panelDocente(app: HTMLElement): void {
       const r = document.getElementById("reloj");
       if (r) r.textContent = mmss(p.restante);
       if (p.restante === 0) {
-        p.rondaEstado = "cerrada";
+        cerrarRonda(p);
         panelDocente(app);
       }
     }, 1000);
@@ -222,22 +222,35 @@ export function panelDocente(app: HTMLElement): void {
 }
 
 function tablaEquipos(p: Partida): string {
-  const filas = p.equipos
-    .map((e, i) => {
-      const caso = D.casos[i % D.casos.length];
-      if (!caso) return "";
-      const r = calcular(D, caso.decision);
-      if (!r.ok) return "";
-      return `<tr><td>Equipo ${e}</td>
-        <td>${esc(pais(caso.decision.iso).nombre)} / ${esc(producto(caso.decision.producto).nombre)}</td>
+  const ronda = p.historial.find((h) => h.ronda === p.ronda);
+  if (!ronda) return "";
+  const filas = ronda.resultados
+    .map((r) => {
+      const d = r.decision;
+      const mercado = d ? `${esc(pais(d.iso).nombre)} / ${esc(producto(d.producto).nombre)}` : "Sin decisión";
+      return `<tr><td>Equipo ${esc(r.equipo)}</td><td>${mercado}${r.exporto || !d ? "" : ' <span class="mal">(no exportó)</span>'}</td>
         <td class="num">${usd(r.costoTotal)}</td><td class="num">${usd(r.ventas)}</td>
-        <td class="num ${r.utilidad < 0 ? "mal" : "ok"}">${usd(r.utilidad)}</td></tr>`;
+        <td class="num ${r.utilidad < 0 ? "mal" : "ok"}">${usd(r.utilidad)}</td>
+        <td class="num">${usd(r.capitalFinal)}</td></tr>`;
     })
     .join("");
-  return `<section class="panel" style="margin-top:1.5rem"><h2>Resultados de la ronda</h2>
+  return `<section class="panel" style="margin-top:1.5rem"><h2>Resultados de la ronda ${p.ronda}</h2>
     <div class="tabla-scroll"><table>
-      <thead><tr><th>Equipo</th><th>Mercado / producto</th><th class="num">Costo total</th><th class="num">Ventas</th><th class="num">Utilidad</th></tr></thead>
+      <thead><tr><th>Equipo</th><th>Mercado / producto</th><th class="num">Costo total</th><th class="num">Ventas</th><th class="num">Utilidad</th><th class="num">Capital</th></tr></thead>
       <tbody>${filas}</tbody></table></div>
-    <p class="nota-proto">Prototipo: cada equipo usa la decisión de un caso de la hoja de cálculo. El ranking (RF-12) llega en el Sprint 2.</p>
+    <p class="nota-proto">Prototipo: los equipos rivales usan decisiones de los casos de la hoja de cálculo; el equipo del estudiante usa la suya.</p>
   </section>`;
+}
+
+function selectorEvento(p: Partida): string {
+  return `<section class="panel" style="margin-top:1.5rem"><h2>Evento de mercado para la ronda ${p.ronda}</h2>
+    <p class="ayuda">Elija un evento antes de iniciar. Los equipos lo verán como aviso al decidir.</p>
+    <fieldset class="eventos"><legend class="sr-only">Evento de mercado</legend>
+      ${EVENTOS.map(
+    (e) => `<label class="evento-opcion" for="evento-${e.id}">
+          <input type="radio" name="evento" id="evento-${e.id}" value="${e.id}"${e.id === p.evento ? " checked" : ""}>
+          <span><i class="bi ${e.icono}" aria-hidden="true"></i><strong>${esc(e.titulo)}</strong>${esc(e.descripcion)}</span>
+        </label>`,
+  ).join("")}
+    </fieldset></section>`;
 }
