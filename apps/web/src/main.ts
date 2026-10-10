@@ -2,6 +2,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import "./estilos.css";
 import { D } from "./datos";
 import { detenerReloj } from "./estado";
+import { pintarRecorrido, recorridoInicio } from "./recorrido";
 import { codigoPartida, crearPartida, panelDocente } from "./vistas/docente";
 import { devs } from "./vistas/devs";
 import { entrar } from "./vistas/entrar";
@@ -21,10 +22,12 @@ const rutas: Record<string, Vista> = {
   "": inicio,
   entrar,
   devs,
+  demo: recorridoInicio,
   "docente/crear": crearPartida,
   "docente/codigo": codigoPartida,
   "docente/equipos": conformarEquipos,
   "docente/panel": panelDocente,
+  "docente/reporte": reporte,
   estudiante: ingresoEstudiante,
   "estudiante/espera": salaEspera,
   "estudiante/decision": decision,
@@ -56,7 +59,8 @@ function render(): void {
   detenerReloj();
   app!.className = "";
   vista(app!, partes);
-  app!.focus();
+  pintarRecorrido();
+  app!.focus();;
   window.scrollTo(0, 0);
 }
 

@@ -1131,3 +1131,20 @@ tr.tu-equipo td { background: #e6f2ef; }
   .dato { border: 1px solid #ccc; }
   .tabla-scroll { overflow: visible; }
 }
+
+/* Recorrido guiado (RF-16) */
+body.con-tour { padding-bottom: 150px; }
+.tour { position: fixed; left: 50%; bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 20; width: min(960px, calc(100% - 2rem)); display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.9rem 1.1rem; border-radius: 20px; background: var(--tinta); color: #fff; }
+.tour strong { font-family: var(--titulo); font-size: 1.1rem; }
+.tour p { margin: 0; }
+.tour-paso { font-size: 0.85rem; color: var(--celeste); }
+.tour-guion { font-size: 0.95rem; color: #d5e4e0; }
+.tour-botones { display: flex; gap: 0.5rem; flex-shrink: 0; }
+.tour .btn.claro { background: transparent; color: #fff; border-color: rgba(255, 255, 255, 0.4); }
+.tour .btn:not(.claro) { background: var(--hierba); border-color: var(--hierba); color: #10290c; }
+.tour-lista { display: grid; gap: 0.6rem; padding-left: 1.4rem; }
+.tour-lista li span { display: block; color: var(--tinta-suave); }
+@media (max-width: 700px) {
+  .tour { flex-direction: column; align-items: stretch; }
+  .tour-guion { display: none; }
+}

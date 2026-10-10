@@ -24,6 +24,7 @@ export function entrar(app: HTMLElement): void {
           <span class="ir">Ver mercados <i class="bi bi-arrow-right-short" aria-hidden="true"></i></span>
         </a>
       </div>
-      <p class="secundario">¿Quieres revisar los números? <a href="#/verificacion">Compara la demo con la hoja de cálculo</a>.</p>
+        <p class="secundario">¿Vas a presentar? <a href="#/demo">Inicia el recorrido guiado</a>.
+        ¿Quieres revisar los números? <a href="#/verificacion">Compara la demo con la hoja de cálculo</a>.</p>
     </section>`;
 }
