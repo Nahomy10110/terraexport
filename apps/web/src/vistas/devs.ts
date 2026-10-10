@@ -52,10 +52,9 @@ export function devs(app: HTMLElement): void {
     <div class="curso">
       <i class="bi bi-mortarboard" aria-hidden="true"></i>
       <p>EIF409 Aplicaciones Informáticas Globales,</p>
-      <p>Universidad Nacional, Sede Regional Chorotega, Campus Liberia.</p>
+      <p>Universidad Nacional,Campus Liberia.</p>
       <p>Docente: MBA. Ariela Moraga Marchena.</p>
     </div>
-        Docente: MBA. Ariela Moraga Marchena.</p>
     </div>
     <div class="acciones">
       <a class="btn" href="#/entrar"><i class="bi bi-play-fill" aria-hidden="true"></i>Iniciar sesión</a>

@@ -61,7 +61,7 @@ function avisoDatos(): void {
     aviso.textContent = `Datos en revisión: ${pendientes} registros de la muestra siguen como «Por verificar» en la hoja de cálculo.`;
   }
   const pie = document.getElementById("pie-generado");
-  if (pie) pie.textContent = `Datos generados el ${D.generado}.`;
+  if (pie) pie.textContent = ` ${D.generado}.`;
 }
 
 window.addEventListener("hashchange", render);
