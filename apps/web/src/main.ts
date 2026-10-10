@@ -10,6 +10,7 @@ import { choqueCultural } from "./vistas/choque";
 import { decision, ingresoEstudiante, resultados, salaEspera } from "./vistas/estudiante";
 import { fichaPais } from "./vistas/ficha";
 import { fichaProducto } from "./vistas/producto";
+import { verRanking } from "./vistas/ranking";
 import { inicio } from "./vistas/inicio";
 import { verificacion } from "./vistas/verificacion";
 
@@ -30,6 +31,7 @@ const rutas: Record<string, Vista> = {
   "estudiante/resultados": resultados,
   pais: fichaPais,
   producto: fichaProducto,
+  ranking: verRanking,
   verificacion,
 };
 

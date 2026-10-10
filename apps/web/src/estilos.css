@@ -1103,3 +1103,16 @@ fieldset:disabled .opcion-choque { cursor: default; }
 .retro.bien { border-left-color: var(--hierba); }
 .retro.mal-retro { border-left-color: var(--perdida); }
 .retro.neutra { border-left-color: var(--aqua); }
+
+/* Ranking (RF-12) */
+.podio { display: flex; align-items: flex-end; justify-content: center; gap: 0.75rem; margin: 1.5rem 0; }
+.podio-col { flex: 0 1 200px; text-align: center; }
+.podio-nombre { font: 600 1.2rem/1.2 var(--titulo); }
+.podio-nombre .bi { color: #d39b0b; margin-right: 0.3rem; }
+.podio-capital { color: var(--tinta-suave); margin-bottom: 0.4rem; }
+.podio-bloque { display: grid; place-items: center; border-radius: 18px 18px 0 0; font: 700 2.4rem/1 var(--titulo); color: #fff; }
+.puesto-1 .podio-bloque { height: 150px; background: var(--jade); }
+.puesto-2 .podio-bloque { height: 110px; background: var(--aqua); }
+.puesto-3 .podio-bloque { height: 80px; background: var(--hierba); color: #10290c; }
+.tu-equipo .podio-nombre { color: var(--jade); text-decoration: underline; }
+tr.tu-equipo td { background: #e6f2ef; }
