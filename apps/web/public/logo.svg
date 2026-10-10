@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="TerraExport">
+  <path d="M38 13.5A18 18 0 1 0 41.5 30" fill="none" stroke="#03695e" stroke-width="5" stroke-linecap="round"/>
+  <rect x="13" y="19" width="19" height="13" rx="2.5" fill="#239dca"/>
+  <path d="M18 22v7M22.5 22v7M27 22v7" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M29 16 42 6M35 6h7v7" fill="none" stroke="#6daf5f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

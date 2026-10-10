@@ -1,0 +1,1164 @@
+{
+  "generado": "2026-10-10 04:54",
+  "parametros": {
+    "capitalInicial": 50000,
+    "elasticidad": 1.5,
+    "rondas": 4,
+    "duracionMin": 8,
+    "origen": "Costa Rica"
+  },
+  "fuentes": {
+    "F1": {
+      "nombre": "UN Comtrade",
+      "url": "https://comtradeplus.un.org",
+      "uso": ""
+    },
+    "F2": {
+      "nombre": "WITS, Banco Mundial",
+      "url": "https://wits.worldbank.org",
+      "uso": ""
+    },
+    "F4": {
+      "nombre": "BCCR, indicadores económicos",
+      "url": "https://www.bccr.fi.cr/indicadores-economicos",
+      "uso": ""
+    },
+    "F5": {
+      "nombre": "Hofstede, Hofstede y Minkov (2010), tablas publicadas (UNC, PMC, Rework)",
+      "url": "https://geerthofstede.com/research-and-vsm/dimension-data-matrix/",
+      "uso": ""
+    },
+    "F6": {
+      "nombre": "Estimación del equipo con referencias de mercado",
+      "url": "",
+      "uso": ""
+    },
+    "F7": {
+      "nombre": "Federal Reserve, G.5 Foreign Exchange Rates (FRED), sep. 2026",
+      "url": "https://fred.stlouisfed.org/release/tables?eid=26693&rid=15",
+      "uso": ""
+    },
+    "F8": {
+      "nombre": "Aduanas de Japón, arancel al 1/4/2026",
+      "url": "https://www.customs.go.jp/english/tariff/2026_04_01/data/e_09.htm",
+      "uso": ""
+    },
+    "F9": {
+      "nombre": "CBSA, Customs Tariff, cap. 08",
+      "url": "https://cbsa-asfc.gc.ca/trade-commerce/tariff-tarif/2024/01-99/ch08-2024-eng.pdf",
+      "uso": ""
+    },
+    "F10": {
+      "nombre": "USITC Harmonized Tariff Schedule (vía agregadores)",
+      "url": "https://hts.usitc.gov",
+      "uso": ""
+    },
+    "F11": {
+      "nombre": "TARIC de la UE (vía thetradehub.eu / hsciq.com)",
+      "url": "https://ec.europa.eu/taxation_customs/dds2/taric/",
+      "uso": ""
+    },
+    "F12": {
+      "nombre": "UK Trade Tariff (vía treayo.com)",
+      "url": "https://www.trade-tariff.service.gov.uk",
+      "uso": ""
+    },
+    "F13": {
+      "nombre": "TIGIE México (vía camtomx.com)",
+      "url": "https://www.snice.gob.mx",
+      "uso": ""
+    },
+    "F14": {
+      "nombre": "Arancel de China 2026 (vía htshub.com)",
+      "url": "https://www.htshub.com/cn-hs/detail/2009490000",
+      "uso": ""
+    },
+    "F15": {
+      "nombre": "Maersk, tarifas Costa Rica 2025-2026",
+      "url": "https://www.maersk.com/news/articles/2026/09/16/terminal-handling-service-revision-costa-rica",
+      "uso": ""
+    },
+    "F16": {
+      "nombre": "Decreto de precio mínimo de la caja de banano (2020)",
+      "url": "https://delfino.cr/2019/12/gobierno-sube-precio-minimo-de-banano-de-exportacion-en-87",
+      "uso": ""
+    },
+    "F17": {
+      "nombre": "ICE Futures US, café arábica, 28/09/2026",
+      "url": "https://es.dailyforex.com/forex-technical-analysis/2026/09/cafe-arabica-en-mexico-pone-a-prueba-soporte-clave-28-septiembre-2026/250132",
+      "uso": ""
+    },
+    "F18": {
+      "nombre": "IndexBox, precio medio de exportación de piña de Costa Rica 2024",
+      "url": "https://www.indexbox.io/store/costa-rica-pineapples-market-report-analysis-and-forecast-to-2020/",
+      "uso": ""
+    },
+    "F19": {
+      "nombre": "PROCOMER (valor exportado 2024) y SEPSA, Boletín Estadístico Agropecuario 35",
+      "url": "https://www.infoagro.go.cr/wp-content/uploads/2025/09/BEA35.pdf",
+      "uso": ""
+    },
+    "F20": {
+      "nombre": "FreshPlaza, mercado global de mango (temporadas anteriores)",
+      "url": "https://www.freshplaza.com/article/2007762/overview-global-market-mango",
+      "uso": ""
+    },
+    "F21": {
+      "nombre": "AgroLatam, exportación de yuca de Costa Rica (2026)",
+      "url": "https://www.agrolatam.com/agricultura-latam/costa-rica-yuca-exportaciones-mercado-global/",
+      "uso": ""
+    },
+    "F22": {
+      "nombre": "El Financiero, chayote de Costa Rica (años anteriores)",
+      "url": "https://www.elfinancierocr.com/economia-y-politica/competitividad-de-mexico-ahoga-al-chayote-de-costa-rica/T7ENQUNP5VGRJDCX2ARZ2NL6RI/story/",
+      "uso": ""
+    },
+    "F23": {
+      "nombre": "Banco Mundial, Pink Sheet, febrero 2026 (promedios 2025)",
+      "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Pink-Sheet-February-2026.pdf",
+      "uso": ""
+    },
+    "F24": {
+      "nombre": "Tridge, precio unitario de jugo de piña de Costa Rica (2025)",
+      "url": "https://www.tridge.com/intelligences/pineapple-juice",
+      "uso": ""
+    }
+  },
+  "paises": [
+    {
+      "iso": "USA",
+      "nombre": "Estados Unidos",
+      "moneda": "Dólar estadounidense",
+      "codigoMoneda": "USD",
+      "unidadesPorUsd": 1,
+      "fuenteTc": "F7",
+      "fechaCorte": "2026-09",
+      "hofstede": {
+        "distanciaPoder": 40,
+        "individualismo": 91,
+        "masculinidad": 62,
+        "aversionIncertidumbre": 46,
+        "largoPlazo": 26,
+        "indulgencia": 68
+      },
+      "fuenteHofstede": "F5",
+      "estado": "TC verificado (oficial). Hofstede: Verificado (secundaria)"
+    },
+    {
+      "iso": "NLD",
+      "nombre": "Países Bajos",
+      "moneda": "Euro",
+      "codigoMoneda": "EUR",
+      "unidadesPorUsd": 0.8692,
+      "fuenteTc": "F7",
+      "fechaCorte": "2026-09",
+      "hofstede": {
+        "distanciaPoder": 38,
+        "individualismo": 80,
+        "masculinidad": 14,
+        "aversionIncertidumbre": 53,
+        "largoPlazo": 67,
+        "indulgencia": 68
+      },
+      "fuenteHofstede": "F5",
+      "estado": "TC verificado (oficial). Hofstede: PDI–UAI verificado; LTO e IVR: matriz 2010 (referencia)"
+    },
+    {
+      "iso": "BEL",
+      "nombre": "Bélgica",
+      "moneda": "Euro",
+      "codigoMoneda": "EUR",
+      "unidadesPorUsd": 0.8692,
+      "fuenteTc": "F7",
+      "fechaCorte": "2026-09",
+      "hofstede": {
+        "distanciaPoder": 65,
+        "individualismo": 75,
+        "masculinidad": 54,
+        "aversionIncertidumbre": 94,
+        "largoPlazo": 82,
+        "indulgencia": 57
+      },
+      "fuenteHofstede": "F5",
+      "estado": "TC verificado (oficial). Hofstede: PDI–UAI verificado; LTO e IVR: matriz 2010 (referencia)"
+    },
+    {
+      "iso": "DEU",
+      "nombre": "Alemania",
+      "moneda": "Euro",
+      "codigoMoneda": "EUR",
+      "unidadesPorUsd": 0.8692,
+      "fuenteTc": "F7",
+      "fechaCorte": "2026-09",
+      "hofstede": {
+        "distanciaPoder": 35,
+        "individualismo": 67,
+        "masculinidad": 66,
+        "aversionIncertidumbre": 65,
+        "largoPlazo": 83,
+        "indulgencia": 40
+      },
+      "fuenteHofstede": "F5",
+      "estado": "TC verificado (oficial). Hofstede: Verificado (secundaria)"
+    },
+    {
+      "iso": "ESP",
+      "nombre": "España",
+      "moneda": "Euro",
+      "codigoMoneda": "EUR",
+      "unidadesPorUsd": 0.8692,
+      "fuenteTc": "F7",
+      "fechaCorte": "2026-09",
+      "hofstede": {
+        "distanciaPoder": 57,
+        "individualismo": 51,
+        "masculinidad": 42,
+        "aversionIncertidumbre": 86,
+        "largoPlazo": 48,
+        "indulgencia": 44
+      },
+      "fuenteHofstede": "F5",
+      "estado": "TC verificado (oficial). Hofstede: Verificado (secundaria)"
+    },
+    {
+      "iso": "GBR",
+      "nombre": "Reino Unido",
+      "moneda": "Libra esterlina",
+      "codigoMoneda": "GBP",
+      "unidadesPorUsd": 0.7459,
+      "fuenteTc": "F7",
+      "fechaCorte": "2026-09",
+      "hofstede": {
+        "distanciaPoder": 35,
+        "individualismo": 89,
+        "masculinidad": 66,
+        "aversionIncertidumbre": 35,
+        "largoPlazo": 51,
+        "indulgencia": 69
+      },
+      "fuenteHofstede": "F5",
+      "estado": "TC verificado (oficial). Hofstede: Verificado (secundaria)"
+    },
+    {
+      "iso": "MEX",
+      "nombre": "México",
+      "moneda": "Peso mexicano",
+      "codigoMoneda": "MXN",
+      "unidadesPorUsd": 17.2695,
+      "fuenteTc": "F7",
+      "fechaCorte": "2026-09",
+      "hofstede": {
+        "distanciaPoder": 81,
+        "individualismo": 30,
+        "masculinidad": 69,
+        "aversionIncertidumbre": 82,
+        "largoPlazo": 24,
+        "indulgencia": 97
+      },
+      "fuenteHofstede": "F5",
+      "estado": "TC verificado (oficial). Hofstede: PDI–UAI verificado; LTO e IVR: matriz 2010 (referencia)"
+    },
+    {
+      "iso": "CAN",
+      "nombre": "Canadá",
+      "moneda": "Dólar canadiense",
+      "codigoMoneda": "CAD",
+      "unidadesPorUsd": 1.3972,
+      "fuenteTc": "F7",
+      "fechaCorte": "2026-09",
+      "hofstede": {
+        "distanciaPoder": 39,
+        "individualismo": 80,
+        "masculinidad": 52,
+        "aversionIncertidumbre": 48,
+        "largoPlazo": 36,
+        "indulgencia": 68
+      },
+      "fuenteHofstede": "F5",
+      "estado": "TC verificado (oficial). Hofstede: PDI–UAI verificado; LTO e IVR: matriz 2010 (referencia)"
+    },
+    {
+      "iso": "CHN",
+      "nombre": "China",
+      "moneda": "Yuan renminbi",
+      "codigoMoneda": "CNY",
+      "unidadesPorUsd": 6.7084,
+      "fuenteTc": "F7",
+      "fechaCorte": "2026-09",
+      "hofstede": {
+        "distanciaPoder": 80,
+        "individualismo": 20,
+        "masculinidad": 66,
+        "aversionIncertidumbre": 30,
+        "largoPlazo": 87,
+        "indulgencia": 24
+      },
+      "fuenteHofstede": "F5",
+      "estado": "TC verificado (oficial). Hofstede: PDI–UAI verificado; LTO e IVR: matriz 2010 (referencia)"
+    },
+    {
+      "iso": "JPN",
+      "nombre": "Japón",
+      "moneda": "Yen",
+      "codigoMoneda": "JPY",
+      "unidadesPorUsd": 156.4171,
+      "fuenteTc": "F7",
+      "fechaCorte": "2026-09",
+      "hofstede": {
+        "distanciaPoder": 54,
+        "individualismo": 46,
+        "masculinidad": 95,
+        "aversionIncertidumbre": 92,
+        "largoPlazo": 88,
+        "indulgencia": 42
+      },
+      "fuenteHofstede": "F5",
+      "estado": "TC verificado (oficial). Hofstede: Verificado (secundaria)"
+    }
+  ],
+  "productos": [
+    {
+      "id": "P01",
+      "nombre": "Banano",
+      "codigoSa": "0803.90",
+      "unidad": "caja 18,14 kg",
+      "pesoKg": 18.14,
+      "costoFob": 8.36,
+      "fuente": "F16",
+      "estado": "Verificado (oficial)",
+      "nota": "Precio mínimo legal FOB por caja."
+    },
+    {
+      "id": "P02",
+      "nombre": "Piña",
+      "codigoSa": "0804.30",
+      "unidad": "caja 12 kg",
+      "pesoKg": 12,
+      "costoFob": 6.55,
+      "fuente": "F18",
+      "estado": "Referencia 2024",
+      "nota": "USD 546 por tonelada × 12 kg."
+    },
+    {
+      "id": "P03",
+      "nombre": "Café oro (verde)",
+      "codigoSa": "0901.11",
+      "unidad": "saco 46 kg",
+      "pesoKg": 46,
+      "costoFob": 281.83,
+      "fuente": "F17",
+      "estado": "Derivado",
+      "nota": "46 kg × 2,20462 lb/kg × USD 2,779/lb."
+    },
+    {
+      "id": "P04",
+      "nombre": "Café tostado",
+      "codigoSa": "0901.21",
+      "unidad": "caja 12 kg",
+      "pesoKg": 12,
+      "costoFob": 116.56,
+      "fuente": "F17",
+      "estado": "Derivado",
+      "nota": "Café oro equivalente (merma de tueste 18 %) + 30 % por tueste y empaque."
+    },
+    {
+      "id": "P05",
+      "nombre": "Melón",
+      "codigoSa": "0807.19",
+      "unidad": "caja 15 kg",
+      "pesoKg": 15,
+      "costoFob": 11.1,
+      "fuente": "F19",
+      "estado": "Referencia 2024",
+      "nota": "USD 43 millones exportados ÷ 58 102 t (volumen 2024)."
+    },
+    {
+      "id": "P06",
+      "nombre": "Mango",
+      "codigoSa": "0804.50",
+      "unidad": "caja 4 kg",
+      "pesoKg": 4,
+      "costoFob": 5.5,
+      "fuente": "F20",
+      "estado": "Referencia (años anteriores)",
+      "nota": "Caja de 4 kg entre USD 4 y 6 en Ecuador; se usa el punto medio."
+    },
+    {
+      "id": "P07",
+      "nombre": "Yuca",
+      "codigoSa": "0714.10",
+      "unidad": "caja 18 kg",
+      "pesoKg": 18,
+      "costoFob": 19.47,
+      "fuente": "F19",
+      "estado": "Referencia 2024",
+      "nota": "USD 146 millones (2024) ÷ 135 000 t anuales (F21)."
+    },
+    {
+      "id": "P08",
+      "nombre": "Chayote",
+      "codigoSa": "0709.99",
+      "unidad": "caja 18 kg",
+      "pesoKg": 18,
+      "costoFob": 8,
+      "fuente": "F22",
+      "estado": "Referencia (años anteriores)",
+      "nota": "Precio internacional promedio de una caja."
+    },
+    {
+      "id": "P09",
+      "nombre": "Plantas ornamentales",
+      "codigoSa": "0602.90",
+      "unidad": "caja 30 plantas",
+      "pesoKg": 10,
+      "costoFob": 25,
+      "fuente": "F6",
+      "estado": "Estimado (referencia de mercado)",
+      "nota": "USD 0,83 por planta en maceta pequeña."
+    },
+    {
+      "id": "P10",
+      "nombre": "Aceite de palma",
+      "codigoSa": "1511.10",
+      "unidad": "tambor 190 kg",
+      "pesoKg": 190,
+      "costoFob": 191.33,
+      "fuente": "F23",
+      "estado": "Referencia 2025",
+      "nota": "USD 1 007 por tonelada (promedio 2025)."
+    },
+    {
+      "id": "P11",
+      "nombre": "Azúcar",
+      "codigoSa": "1701.14",
+      "unidad": "saco 50 kg",
+      "pesoKg": 50,
+      "costoFob": 18.5,
+      "fuente": "F23",
+      "estado": "Referencia 2025",
+      "nota": "USD 0,37 por kg, precio mundial (promedio 2025)."
+    },
+    {
+      "id": "P12",
+      "nombre": "Jugo concentrado de piña",
+      "codigoSa": "2009.49",
+      "unidad": "tambor 250 kg",
+      "pesoKg": 250,
+      "costoFob": 275,
+      "fuente": "F24",
+      "estado": "Referencia 2025",
+      "nota": "USD 1,10 por kg."
+    },
+    {
+      "id": "P13",
+      "nombre": "Palmito preparado",
+      "codigoSa": "2008.91",
+      "unidad": "caja 24 frascos",
+      "pesoKg": 12,
+      "costoFob": 30,
+      "fuente": "F6",
+      "estado": "Estimado (referencia de mercado)",
+      "nota": "USD 1,25 por frasco."
+    },
+    {
+      "id": "P14",
+      "nombre": "Cacao en grano",
+      "codigoSa": "1801.00",
+      "unidad": "saco 60 kg",
+      "pesoKg": 60,
+      "costoFob": 468,
+      "fuente": "F23",
+      "estado": "Referencia 2025",
+      "nota": "USD 7,80 por kg (promedio 2025)."
+    },
+    {
+      "id": "P15",
+      "nombre": "Dispositivos médicos (catéteres)",
+      "codigoSa": "9018.39",
+      "unidad": "caja 100 unidades",
+      "pesoKg": 8,
+      "costoFob": 450,
+      "fuente": "F6",
+      "estado": "Estimado (referencia de mercado)",
+      "nota": "USD 4,50 por catéter desechable."
+    }
+  ],
+  "rutas": [
+    {
+      "iso": "USA",
+      "medio": "Marítimo",
+      "fletePorKg": 0.18,
+      "pctSeguro": 0.005,
+      "diasTransito": 7,
+      "fuente": "F6",
+      "estado": "Estimado (referencia de mercado)",
+      "nota": "Tarifa general de referencia; seguro 0,3–0,5 % y tránsito según itinerarios habituales."
+    },
+    {
+      "iso": "USA",
+      "medio": "Aéreo",
+      "fletePorKg": 1.6,
+      "pctSeguro": 0.0035,
+      "diasTransito": 1,
+      "fuente": "F6",
+      "estado": "Estimado (referencia de mercado)",
+      "nota": "Tarifa general de referencia; seguro 0,3–0,5 % y tránsito según itinerarios habituales."
+    },
+    {
+      "iso": "NLD",
+      "medio": "Marítimo",
+      "fletePorKg": 0.19,
+      "pctSeguro": 0.005,
+      "diasTransito": 18,
+      "fuente": "F15",
+      "estado": "Derivado",
+      "nota": "Flete reefer 40' USD 3 200 + manejo en Moín USD 645, sobre 20 t."
+    },
+    {
+      "iso": "NLD",
+      "medio": "Aéreo",
+      "fletePorKg": 2.8,
+      "pctSeguro": 0.0035,
+      "diasTransito": 2,
+      "fuente": "F6",
+      "estado": "Estimado (referencia de mercado)",
+      "nota": "Tarifa general de referencia; seguro 0,3–0,5 % y tránsito según itinerarios habituales."
+    },
+    {
+      "iso": "BEL",
+      "medio": "Marítimo",
+      "fletePorKg": 0.19,
+      "pctSeguro": 0.005,
+      "diasTransito": 18,
+      "fuente": "F6",
+      "estado": "Estimado (referencia de mercado)",
+      "nota": "Igual a Moín–Rotterdam (misma ruta a Europa)."
+    },
+    {
+      "iso": "BEL",
+      "medio": "Aéreo",
+      "fletePorKg": 2.8,
+      "pctSeguro": 0.0035,
+      "diasTransito": 2,
+      "fuente": "F6",
+      "estado": "Estimado (referencia de mercado)",
+      "nota": "Tarifa general de referencia; seguro 0,3–0,5 % y tránsito según itinerarios habituales."
+    },
+    {
+      "iso": "DEU",
+      "medio": "Marítimo",
+      "fletePorKg": 0.19,
+      "pctSeguro": 0.005,
+      "diasTransito": 20,
+      "fuente": "F6",
+      "estado": "Estimado (referencia de mercado)",
+      "nota": "Igual a Moín–Rotterdam (misma ruta a Europa)."
+    },
+    {
+      "iso": "DEU",
+      "medio": "Aéreo",
+      "fletePorKg": 2.9,
+      "pctSeguro": 0.0035,
+      "diasTransito": 2,
+      "fuente": "F6",
+      "estado": "Estimado (referencia de mercado)",
+      "nota": "Tarifa general de referencia; seguro 0,3–0,5 % y tránsito según itinerarios habituales."
+    },
+    {
+      "iso": "ESP",
+      "medio": "Marítimo",
+      "fletePorKg": 0.19,
+      "pctSeguro": 0.005,
+      "diasTransito": 16,
+      "fuente": "F6",
+      "estado": "Estimado (referencia de mercado)",
+      "nota": "Igual a Moín–Rotterdam (misma ruta a Europa)."
+    },
+    {
+      "iso": "ESP",
+      "medio": "Aéreo",
+      "fletePorKg": 2.7,
+      "pctSeguro": 0.0035,
+      "diasTransito": 2,
+      "fuente": "F6",
+      "estado": "Estimado (referencia de mercado)",
+      "nota": "Tarifa general de referencia; seguro 0,3–0,5 % y tránsito según itinerarios habituales."
+    },
+    {
+      "iso": "GBR",
+      "medio": "Marítimo",
+      "fletePorKg": 0.19,
+      "pctSeguro": 0.005,
+      "diasTransito": 19,
+      "fuente": "F6",
+      "estado": "Estimado (referencia de mercado)",
+      "nota": "Igual a Moín–Rotterdam (misma ruta a Europa)."
+    },
+    {
+      "iso": "GBR",
+      "medio": "Aéreo",
+      "fletePorKg": 2.9,
+      "pctSeguro": 0.0035,
+      "diasTransito": 2,
+      "fuente": "F6",
+      "estado": "Estimado (referencia de mercado)",
+      "nota": "Tarifa general de referencia; seguro 0,3–0,5 % y tránsito según itinerarios habituales."
+    },
+    {
+      "iso": "MEX",
+      "medio": "Marítimo",
+      "fletePorKg": 0.22,
+      "pctSeguro": 0.005,
+      "diasTransito": 9,
+      "fuente": "F6",
+      "estado": "Estimado (referencia de mercado)",
+      "nota": "Tarifa general de referencia; seguro 0,3–0,5 % y tránsito según itinerarios habituales."
+    },
+    {
+      "iso": "MEX",
+      "medio": "Aéreo",
+      "fletePorKg": 1.8,
+      "pctSeguro": 0.0035,
+      "diasTransito": 1,
+      "fuente": "F6",
+      "estado": "Estimado (referencia de mercado)",
+      "nota": "Tarifa general de referencia; seguro 0,3–0,5 % y tránsito según itinerarios habituales."
+    },
+    {
+      "iso": "CAN",
+      "medio": "Marítimo",
+      "fletePorKg": 0.3,
+      "pctSeguro": 0.005,
+      "diasTransito": 14,
+      "fuente": "F6",
+      "estado": "Estimado (referencia de mercado)",
+      "nota": "Tarifa general de referencia; seguro 0,3–0,5 % y tránsito según itinerarios habituales."
+    },
+    {
+      "iso": "CAN",
+      "medio": "Aéreo",
+      "fletePorKg": 2.2,
+      "pctSeguro": 0.0035,
+      "diasTransito": 2,
+      "fuente": "F6",
+      "estado": "Estimado (referencia de mercado)",
+      "nota": "Tarifa general de referencia; seguro 0,3–0,5 % y tránsito según itinerarios habituales."
+    },
+    {
+      "iso": "CHN",
+      "medio": "Marítimo",
+      "fletePorKg": 0.45,
+      "pctSeguro": 0.005,
+      "diasTransito": 35,
+      "fuente": "F6",
+      "estado": "Estimado (referencia de mercado)",
+      "nota": "Tarifa general de referencia; seguro 0,3–0,5 % y tránsito según itinerarios habituales."
+    },
+    {
+      "iso": "CHN",
+      "medio": "Aéreo",
+      "fletePorKg": 3.8,
+      "pctSeguro": 0.0035,
+      "diasTransito": 3,
+      "fuente": "F6",
+      "estado": "Estimado (referencia de mercado)",
+      "nota": "Tarifa general de referencia; seguro 0,3–0,5 % y tránsito según itinerarios habituales."
+    },
+    {
+      "iso": "JPN",
+      "medio": "Marítimo",
+      "fletePorKg": 0.48,
+      "pctSeguro": 0.005,
+      "diasTransito": 32,
+      "fuente": "F6",
+      "estado": "Estimado (referencia de mercado)",
+      "nota": "Tarifa general de referencia; seguro 0,3–0,5 % y tránsito según itinerarios habituales."
+    },
+    {
+      "iso": "JPN",
+      "medio": "Aéreo",
+      "fletePorKg": 3.9,
+      "pctSeguro": 0.0035,
+      "diasTransito": 3,
+      "fuente": "F6",
+      "estado": "Estimado (referencia de mercado)",
+      "nota": "Tarifa general de referencia; seguro 0,3–0,5 % y tránsito según itinerarios habituales."
+    }
+  ],
+  "aranceles": [
+    {
+      "iso": "USA",
+      "producto": "P01",
+      "pct": 0,
+      "fuente": "F10",
+      "fechaCorte": "2026-10-09",
+      "estado": "Verificado (secundaria)",
+      "nota": "HTS 0803.90.00: Free."
+    },
+    {
+      "iso": "NLD",
+      "producto": "P02",
+      "pct": 0.058,
+      "fuente": "F11",
+      "fechaCorte": "2026-10-09",
+      "estado": "Verificado (secundaria)",
+      "nota": "CN 0804 30 00: 5,8 %."
+    },
+    {
+      "iso": "DEU",
+      "producto": "P03",
+      "pct": 0,
+      "fuente": "F11",
+      "fechaCorte": "2026-10-09",
+      "estado": "Referencia (histórico UE)",
+      "nota": "CN 0901 11 00: 0 %, tasa histórica de la UE para café verde."
+    },
+    {
+      "iso": "JPN",
+      "producto": "P04",
+      "pct": 0.12,
+      "fuente": "F8",
+      "fechaCorte": "2026-10-09",
+      "estado": "Verificado (oficial)",
+      "nota": "0901.21.000: tasa OMC 12 %."
+    },
+    {
+      "iso": "GBR",
+      "producto": "P05",
+      "pct": 0.08,
+      "fuente": "F12",
+      "fechaCorte": "2026-10-09",
+      "estado": "Verificado (secundaria)",
+      "nota": "0807 19 00 50: 8 %."
+    },
+    {
+      "iso": "CAN",
+      "producto": "P06",
+      "pct": 0,
+      "fuente": "F9",
+      "fechaCorte": "2026-10-09",
+      "estado": "Verificado (oficial)",
+      "nota": "0804.50.00: Free."
+    },
+    {
+      "iso": "USA",
+      "producto": "P07",
+      "pct": 0.113,
+      "fuente": "F10",
+      "fechaCorte": "2026-10-09",
+      "estado": "Verificado (secundaria)",
+      "nota": "HTS 0714.10.20.00: 11,3 %."
+    },
+    {
+      "iso": "ESP",
+      "producto": "P09",
+      "pct": 0.065,
+      "fuente": "F11",
+      "fechaCorte": "2026-10-09",
+      "estado": "Verificado (secundaria)",
+      "nota": "CN 0602 90 70 plantas de interior: 6,5 %."
+    },
+    {
+      "iso": "MEX",
+      "producto": "P15",
+      "pct": 0,
+      "fuente": "F13",
+      "fechaCorte": "2026-10-09",
+      "estado": "Verificado (secundaria)",
+      "nota": "TIGIE 9018.39.01: exento."
+    },
+    {
+      "iso": "CHN",
+      "producto": "P12",
+      "pct": 0.05,
+      "fuente": "F14",
+      "fechaCorte": "2026-10-09",
+      "estado": "Verificado (secundaria)",
+      "nota": "2009.49.00: NMF 5 %."
+    }
+  ],
+  "demanda": [
+    {
+      "iso": "USA",
+      "producto": "P01",
+      "precioReferencia": 14.6,
+      "demandaBase": 4000,
+      "fuente": "F6",
+      "estado": "Parámetro del juego"
+    },
+    {
+      "iso": "NLD",
+      "producto": "P02",
+      "precioReferencia": 11.74,
+      "demandaBase": 4500,
+      "fuente": "F6",
+      "estado": "Parámetro del juego"
+    },
+    {
+      "iso": "DEU",
+      "producto": "P03",
+      "precioReferencia": 365.03,
+      "demandaBase": 90,
+      "fuente": "F6",
+      "estado": "Parámetro del juego"
+    },
+    {
+      "iso": "JPN",
+      "producto": "P04",
+      "precioReferencia": 172.1,
+      "demandaBase": 150,
+      "fuente": "F6",
+      "estado": "Parámetro del juego"
+    },
+    {
+      "iso": "GBR",
+      "producto": "P05",
+      "precioReferencia": 18.93,
+      "demandaBase": 3600,
+      "fuente": "F6",
+      "estado": "Parámetro del juego"
+    },
+    {
+      "iso": "CAN",
+      "producto": "P06",
+      "precioReferencia": 8.42,
+      "demandaBase": 1000,
+      "fuente": "F6",
+      "estado": "Parámetro del juego"
+    },
+    {
+      "iso": "USA",
+      "producto": "P07",
+      "precioReferencia": 31.75,
+      "demandaBase": 1200,
+      "fuente": "F6",
+      "estado": "Parámetro del juego"
+    },
+    {
+      "iso": "ESP",
+      "producto": "P09",
+      "precioReferencia": 69.47,
+      "demandaBase": 400,
+      "fuente": "F6",
+      "estado": "Parámetro del juego"
+    },
+    {
+      "iso": "MEX",
+      "producto": "P15",
+      "precioReferencia": 582.53,
+      "demandaBase": 100,
+      "fuente": "F6",
+      "estado": "Parámetro del juego"
+    },
+    {
+      "iso": "CHN",
+      "producto": "P12",
+      "precioReferencia": 511.14,
+      "demandaBase": 60,
+      "fuente": "F6",
+      "estado": "Parámetro del juego"
+    }
+  ],
+  "casos": [
+    {
+      "caso": "C01",
+      "decision": {
+        "iso": "USA",
+        "producto": "P01",
+        "medio": "Marítimo",
+        "volumen": 2000,
+        "precio": 13.87,
+        "equipos": 2,
+        "variacion": 0,
+        "capital": 50000
+      },
+      "esperado": {
+        "valorFob": 16720,
+        "flete": 6530.4,
+        "seguro": 116.25,
+        "valorCif": 23366.65,
+        "arancel": 0,
+        "costoTotal": 23366.65,
+        "tcAplicado": 1,
+        "costoLocal": 23366.65,
+        "indicePrecio": 0.95,
+        "unidadesVendidas": 2000,
+        "ventas": 27740,
+        "utilidad": 4373.35,
+        "capitalFinal": 54373.35,
+        "valida": "Sí",
+        "explicacion": "Vendiste las 2000 unidades enviadas. Tu precio en moneda local quedó 5 % por debajo del de referencia y competiste con 1 equipo(s) más. Este mercado no cobra arancel a tu producto. Resultado: utilidad."
+      }
+    },
+    {
+      "caso": "C02",
+      "decision": {
+        "iso": "NLD",
+        "producto": "P02",
+        "medio": "Marítimo",
+        "volumen": 1500,
+        "precio": 10.92,
+        "equipos": 3,
+        "variacion": 0,
+        "capital": 50000
+      },
+      "esperado": {
+        "valorFob": 9825,
+        "flete": 3420,
+        "seguro": 66.23,
+        "valorCif": 13311.23,
+        "arancel": 772.05,
+        "costoTotal": 14083.28,
+        "tcAplicado": 0.8692,
+        "costoLocal": 12241.19,
+        "indicePrecio": 0.9302,
+        "unidadesVendidas": 1500,
+        "ventas": 16380,
+        "utilidad": 2296.72,
+        "capitalFinal": 52296.72,
+        "valida": "Sí",
+        "explicacion": "Vendiste las 1500 unidades enviadas. Tu precio en moneda local quedó 7 % por debajo del de referencia y competiste con 2 equipo(s) más. El arancel se llevó el 5 % de tu costo total. Resultado: utilidad."
+      }
+    },
+    {
+      "caso": "C03",
+      "decision": {
+        "iso": "DEU",
+        "producto": "P03",
+        "medio": "Marítimo",
+        "volumen": 40,
+        "precio": 346.78,
+        "equipos": 2,
+        "variacion": 0,
+        "capital": 50000
+      },
+      "esperado": {
+        "valorFob": 11273.2,
+        "flete": 349.6,
+        "seguro": 58.11,
+        "valorCif": 11680.91,
+        "arancel": 0,
+        "costoTotal": 11680.91,
+        "tcAplicado": 0.8692,
+        "costoLocal": 10153.05,
+        "indicePrecio": 0.95,
+        "unidadesVendidas": 40,
+        "ventas": 13871.2,
+        "utilidad": 2190.29,
+        "capitalFinal": 52190.29,
+        "valida": "Sí",
+        "explicacion": "Vendiste las 40 unidades enviadas. Tu precio en moneda local quedó 5 % por debajo del de referencia y competiste con 1 equipo(s) más. Este mercado no cobra arancel a tu producto. Resultado: utilidad."
+      }
+    },
+    {
+      "caso": "C04",
+      "decision": {
+        "iso": "JPN",
+        "producto": "P04",
+        "medio": "Aéreo",
+        "volumen": 100,
+        "precio": 180.71,
+        "equipos": 2,
+        "variacion": 0.04,
+        "capital": 50000
+      },
+      "esperado": {
+        "valorFob": 11656,
+        "flete": 4680,
+        "seguro": 57.18,
+        "valorCif": 16393.18,
+        "arancel": 1967.18,
+        "costoTotal": 18360.36,
+        "tcAplicado": 162.6738,
+        "costoLocal": 2986749.53,
+        "indicePrecio": 1.092,
+        "unidadesVendidas": 65,
+        "ventas": 11746.15,
+        "utilidad": -6614.21,
+        "capitalFinal": 43385.79,
+        "valida": "Sí",
+        "explicacion": "Vendiste 65 de 100 unidades. Tu precio en moneda local quedó 9 % por encima del de referencia y competiste con 1 equipo(s) más. El arancel se llevó el 11 % de tu costo total. Resultado: pérdida."
+      }
+    },
+    {
+      "caso": "C05",
+      "decision": {
+        "iso": "GBR",
+        "producto": "P05",
+        "medio": "Marítimo",
+        "volumen": 1200,
+        "precio": 17.98,
+        "equipos": 3,
+        "variacion": 0,
+        "capital": 50000
+      },
+      "esperado": {
+        "valorFob": 13320,
+        "flete": 3420,
+        "seguro": 83.7,
+        "valorCif": 16823.7,
+        "arancel": 1345.9,
+        "costoTotal": 18169.6,
+        "tcAplicado": 0.7459,
+        "costoLocal": 13552.7,
+        "indicePrecio": 0.9498,
+        "unidadesVendidas": 1200,
+        "ventas": 21576,
+        "utilidad": 3406.4,
+        "capitalFinal": 53406.4,
+        "valida": "Sí",
+        "explicacion": "Vendiste las 1200 unidades enviadas. Tu precio en moneda local quedó 5 % por debajo del de referencia y competiste con 2 equipo(s) más. El arancel se llevó el 7 % de tu costo total. Resultado: utilidad."
+      }
+    },
+    {
+      "caso": "C06",
+      "decision": {
+        "iso": "CAN",
+        "producto": "P06",
+        "medio": "Aéreo",
+        "volumen": 800,
+        "precio": 9.18,
+        "equipos": 2,
+        "variacion": 0,
+        "capital": 50000
+      },
+      "esperado": {
+        "valorFob": 4400,
+        "flete": 7040,
+        "seguro": 40.04,
+        "valorCif": 11480.04,
+        "arancel": 0,
+        "costoTotal": 11480.04,
+        "tcAplicado": 1.3972,
+        "costoLocal": 16039.91,
+        "indicePrecio": 1.0903,
+        "unidadesVendidas": 439,
+        "ventas": 4030.02,
+        "utilidad": -7450.02,
+        "capitalFinal": 42549.98,
+        "valida": "Sí",
+        "explicacion": "Vendiste 439 de 800 unidades. Tu precio en moneda local quedó 9 % por encima del de referencia y competiste con 1 equipo(s) más. Este mercado no cobra arancel a tu producto. Resultado: pérdida."
+      }
+    },
+    {
+      "caso": "C07",
+      "decision": {
+        "iso": "USA",
+        "producto": "P07",
+        "medio": "Marítimo",
+        "volumen": 900,
+        "precio": 33.34,
+        "equipos": 2,
+        "variacion": 0,
+        "capital": 50000
+      },
+      "esperado": {
+        "valorFob": 17523,
+        "flete": 2916,
+        "seguro": 102.2,
+        "valorCif": 20541.2,
+        "arancel": 2321.16,
+        "costoTotal": 22862.36,
+        "tcAplicado": 1,
+        "costoLocal": 22862.36,
+        "indicePrecio": 1.0501,
+        "unidadesVendidas": 557,
+        "ventas": 18570.38,
+        "utilidad": -4291.98,
+        "capitalFinal": 45708.02,
+        "valida": "Sí",
+        "explicacion": "Vendiste 557 de 900 unidades. Tu precio en moneda local quedó 5 % por encima del de referencia y competiste con 1 equipo(s) más. El arancel se llevó el 10 % de tu costo total. Resultado: pérdida."
+      }
+    },
+    {
+      "caso": "C08",
+      "decision": {
+        "iso": "ESP",
+        "producto": "P09",
+        "medio": "Aéreo",
+        "volumen": 200,
+        "precio": 69.47,
+        "equipos": 2,
+        "variacion": -0.03,
+        "capital": 50000
+      },
+      "esperado": {
+        "valorFob": 5000,
+        "flete": 5400,
+        "seguro": 36.4,
+        "valorCif": 10436.4,
+        "arancel": 678.37,
+        "costoTotal": 11114.77,
+        "tcAplicado": 0.8431,
+        "costoLocal": 9370.86,
+        "indicePrecio": 0.97,
+        "unidadesVendidas": 200,
+        "ventas": 13894,
+        "utilidad": 2779.23,
+        "capitalFinal": 52779.23,
+        "valida": "Sí",
+        "explicacion": "Vendiste las 200 unidades enviadas. Tu precio en moneda local quedó 3 % por debajo del de referencia y competiste con 1 equipo(s) más. El arancel se llevó el 6 % de tu costo total. Resultado: utilidad."
+      }
+    },
+    {
+      "caso": "C09",
+      "decision": {
+        "iso": "MEX",
+        "producto": "P15",
+        "medio": "Aéreo",
+        "volumen": 60,
+        "precio": 553.4,
+        "equipos": 2,
+        "variacion": 0.06,
+        "capital": 50000
+      },
+      "esperado": {
+        "valorFob": 27000,
+        "flete": 864,
+        "seguro": 97.52,
+        "valorCif": 27961.52,
+        "arancel": 0,
+        "costoTotal": 27961.52,
+        "tcAplicado": 18.3057,
+        "costoLocal": 511855.2,
+        "indicePrecio": 1.007,
+        "unidadesVendidas": 49,
+        "ventas": 27116.6,
+        "utilidad": -844.92,
+        "capitalFinal": 49155.08,
+        "valida": "Sí",
+        "explicacion": "Vendiste 49 de 60 unidades. Tu precio en moneda local quedó 1 % por encima del de referencia y competiste con 1 equipo(s) más. Este mercado no cobra arancel a tu producto. Resultado: pérdida."
+      }
+    },
+    {
+      "caso": "C10",
+      "decision": {
+        "iso": "CHN",
+        "producto": "P12",
+        "medio": "Marítimo",
+        "volumen": 40,
+        "precio": 531.59,
+        "equipos": 2,
+        "variacion": 0,
+        "capital": 50000
+      },
+      "esperado": {
+        "valorFob": 11000,
+        "flete": 4500,
+        "seguro": 77.5,
+        "valorCif": 15577.5,
+        "arancel": 778.88,
+        "costoTotal": 16356.38,
+        "tcAplicado": 6.7084,
+        "costoLocal": 109725.14,
+        "indicePrecio": 1.04,
+        "unidadesVendidas": 28,
+        "ventas": 14884.52,
+        "utilidad": -1471.86,
+        "capitalFinal": 48528.14,
+        "valida": "Sí",
+        "explicacion": "Vendiste 28 de 40 unidades. Tu precio en moneda local quedó 4 % por encima del de referencia y competiste con 1 equipo(s) más. El arancel se llevó el 5 % de tu costo total. Resultado: pérdida."
+      }
+    }
+  ]
+}

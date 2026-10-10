@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>TerraExport</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="barra">
+      <a class="marca" href="#/" aria-label="TerraExport, inicio">
+        <img src="logo.svg" alt="" width="36" height="36" />
+        TerraExport
+      </a>
+      <nav class="barra-nav" aria-label="Secciones">
+        <a href="#/">Inicio</a>
+        <a href="#/pais/USA">Mercados</a>
+        <a href="#/verificacion">Verificación</a>
+      </nav>
+      <div class="barra-acciones">
+        <a class="btn claro chico" href="#/devs">Conoce a los devs</a>
+        <a class="btn chico" href="#/entrar">Iniciar sesión</a>
+      </div>
+    </header>
+    <div id="aviso-datos" class="aviso" hidden></div>
+    <main id="app" tabindex="-1"></main>
+    <footer class="pie">
+      Prototipo académico del curso EIF409, UNA Campus Liberia. <span id="pie-generado"></span>
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "name": "terraexport",
+  "private": true,
+  "version": "0.2.0",
+  "description": "Plataforma web de simulación de comercio internacional (EIF409, UNA Campus Liberia).",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "npm run dev -w @terraexport/web",
+    "build": "npm run build -w @terraexport/web",
+    "preview": "npm run preview -w @terraexport/web",
+    "test": "npm run test -w @terraexport/motor",
+    "typecheck": "tsc -p packages/motor --noEmit && tsc -p apps/web --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "npm run format:check && npm run typecheck && npm run test && npm run build"
+  },
+  "devDependencies": {
+    "prettier": "3.3.3",
+    "typescript": "5.6.3"
+  }
+}

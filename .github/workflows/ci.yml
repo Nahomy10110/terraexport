@@ -1,0 +1,27 @@
+name: CI
+
+# Corre en cada pull request y en cada push a main.
+# Un pull request no se une a main si este flujo falla.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Formato
+        run: npm run format:check
+      - name: Tipos
+        run: npm run typecheck
+      - name: Pruebas (motor vs. hoja de cálculo)
+        run: npm test
+      - name: Compilación
+        run: npm run build

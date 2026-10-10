@@ -1,0 +1,6 @@
+node_modules
+dist
+coverage
+datos/muestra.json
+package-lock.json
+*.md

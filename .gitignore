@@ -1,0 +1,29 @@
+# Dependencias y compilados
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Variables de entorno (nunca subir credenciales)
+.env
+.env.*
+!.env.example
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos temporales de Office
+~$*
+*.tmp
+
+# Editores
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
