@@ -11,6 +11,7 @@ import { decision, ingresoEstudiante, resultados, salaEspera } from "./vistas/es
 import { fichaPais } from "./vistas/ficha";
 import { fichaProducto } from "./vistas/producto";
 import { verRanking } from "./vistas/ranking";
+import { reporte } from "./vistas/reporte";
 import { inicio } from "./vistas/inicio";
 import { verificacion } from "./vistas/verificacion";
 

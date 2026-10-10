@@ -1116,3 +1116,18 @@ fieldset:disabled .opcion-choque { cursor: default; }
 .puesto-3 .podio-bloque { height: 80px; background: var(--hierba); color: #10290c; }
 .tu-equipo .podio-nombre { color: var(--jade); text-decoration: underline; }
 tr.tu-equipo td { background: #e6f2ef; }
+
+/* Reporte (RF-15) */
+.reporte-encabezado { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; }
+.reporte-encabezado .acciones { margin-top: 0; }
+.reporte h2 { margin-top: 2rem; }
+.reporte-ronda { margin-top: 1.25rem; break-inside: avoid; }
+.reporte table { background: #fff; }
+
+@media print {
+  .barra, .pie, .aviso, .acciones, .nota-proto, .tour { display: none !important; }
+  body { background: #fff; font-size: 11pt; }
+  main { padding: 0; max-width: none; }
+  .dato { border: 1px solid #ccc; }
+  .tabla-scroll { overflow: visible; }
+}
