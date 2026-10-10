@@ -259,3 +259,34 @@ h2.con-bandera {
   font-size: clamp(1.1rem, 1.6vw, 1.45rem);
   white-space: nowrap;
 }
+
+/* Listas de países y productos: sin subrayado, la fila completa reacciona al pasar el mouse */
+.lista-equipos a,
+a.con-bandera {
+  color: var(--tinta);
+  font-weight: 500;
+  text-decoration: none;
+}
+.lista-equipos a:hover,
+a.con-bandera:hover {
+  color: var(--jade);
+}
+.lista-equipos a[aria-current="page"] {
+  color: var(--jade);
+  font-weight: 700;
+}
+.lista-equipos li {
+  position: relative;
+  transition: background 0.2s;
+}
+/* El enlace cubre toda la fila: se puede hacer clic en cualquier parte. */
+.lista-equipos a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+.lista-equipos li:has(a:hover),
+.lista-equipos li:has(a[aria-current="page"]) {
+  background: #e6f2ef;
+}
