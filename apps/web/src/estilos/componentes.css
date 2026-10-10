@@ -1,0 +1,227 @@
+/* componentes.css: Piezas compartidas: paneles, formularios, chips, tablas, datos clave y notas de prototipo. */
+
+.lead {
+  font-size: 1.15rem;
+  color: var(--tinta-suave);
+}
+
+.panel {
+  background: var(--superficie);
+  border-radius: var(--radio);
+  padding: 1.5rem;
+  border: 1px solid var(--linea);
+}
+
+.dos-col {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.campo {
+  display: grid;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.campo label,
+.campo legend {
+  font-weight: 600;
+}
+
+.campo .ayuda {
+  color: var(--tinta-suave);
+  font-size: 0.9rem;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+select {
+  font: inherit;
+  padding: 0.65rem 0.8rem;
+  border: 1.5px solid #b9c7c2;
+  border-radius: var(--radio-chico);
+  background: #fff;
+  color: var(--tinta);
+  width: 100%;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--aqua);
+}
+
+input[aria-invalid="true"] {
+  border-color: var(--perdida);
+}
+
+.error {
+  color: var(--perdida);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.fila {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  position: relative;
+}
+
+.chip input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  cursor: pointer;
+}
+
+.chip span {
+  display: inline-block;
+  padding: 0.45rem 0.9rem;
+  border: 1.5px solid #b9c7c2;
+  border-radius: 999px;
+  background: #fff;
+}
+
+.chip input:checked + span {
+  background: var(--jade);
+  color: #fff;
+  border-color: var(--jade);
+}
+
+.chip input:focus-visible + span {
+  outline: 3px solid var(--aqua);
+  outline-offset: 2px;
+}
+
+.pasos {
+  display: flex;
+  gap: 1.5rem;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.pasos li {
+  color: var(--tinta-suave);
+  font-weight: 500;
+  padding-bottom: 0.3rem;
+  border-bottom: 3px solid transparent;
+}
+
+.pasos li[aria-current="step"] {
+  color: var(--tinta);
+  border-bottom-color: var(--aqua);
+}
+
+.datos-clave {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.dato {
+  background: var(--fondo);
+  border-radius: var(--radio-chico);
+  padding: 0.75rem 0.9rem;
+}
+
+.dato .n {
+  font: 600 1.6rem/1.1 var(--titulo);
+  color: var(--jade);
+}
+
+.dato .l {
+  color: var(--tinta-suave);
+  font-size: 0.9rem;
+}
+
+.fuente {
+  color: var(--tinta-suave);
+  font-size: 0.82rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.55rem 0.6rem;
+  border-bottom: 1px solid #e4e9e1;
+}
+
+td.num,
+th.num {
+  text-align: right;
+}
+
+tr.total td {
+  font-weight: 600;
+  border-top: 2px solid var(--tinta);
+}
+
+.tabla-scroll {
+  overflow-x: auto;
+}
+
+td .ok,
+td .mal {
+  white-space: nowrap;
+}
+
+.ok {
+  color: var(--utilidad);
+  font-weight: 700;
+}
+
+.mal {
+  color: var(--perdida);
+  font-weight: 700;
+}
+
+.tabla-scroll + .nota-proto {
+  margin-top: 1rem;
+}
+
+.nota-proto {
+  font-size: 0.9rem;
+  color: var(--tinta-suave);
+  border: 1px dashed #b9c7c2;
+  padding: 0.6rem 0.85rem;
+  border-radius: var(--radio-chico);
+}
+
+@media (max-width: 820px) {
+  .dos-col {
+    grid-template-columns: 1fr;
+  }
+}
+
+td.num,
+th.num {
+  white-space: nowrap;
+}

@@ -1,0 +1,552 @@
+/* inicio.css: Página principal, carrusel, tarjetas, Iniciar sesión (tres caminos) y Conoce a los devs. */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: clamp(460px, 72vh, 640px);
+  display: grid;
+  place-items: start center;
+  padding: clamp(3.5rem, 9vh, 6rem) 1.25rem 0;
+  text-align: center;
+  background: linear-gradient(180deg, var(--aqua) 0%, #5fb4d6 45%, var(--celeste) 100%);
+}
+
+.hero-texto {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+}
+
+.hero h1 {
+  color: #fff;
+  font-size: clamp(2.3rem, 6vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.hero p {
+  margin: 0 auto 1.5rem;
+  color: #0e3b4a;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.hero .acciones {
+  justify-content: center;
+}
+
+.hero-paisaje {
+  position: absolute;
+  inset: auto 0 0 0;
+  width: 100%;
+  height: 46%;
+  z-index: 1;
+}
+
+.barco {
+  animation: zarpar 2.8s cubic-bezier(0.2, 0.7, 0.2, 1) 0.3s both;
+}
+
+@keyframes zarpar {
+  from {
+    transform: translateX(-420px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.seccion {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: clamp(3rem, 7vw, 4.5rem) clamp(1rem, 4vw, 2.5rem);
+}
+
+.seccion.lino {
+  max-width: none;
+  background: var(--lino);
+}
+
+.seccion.lino > * {
+  max-width: 1120px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.que-es {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.que-es p {
+  font-size: 1.1rem;
+}
+
+.lista-pasos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.lista-pasos li {
+  display: grid;
+  grid-template-columns: 2.4rem 1fr;
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.lista-pasos .bi {
+  display: grid;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--jade);
+  font-size: 1.15rem;
+}
+
+.carrusel {
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--linea);
+}
+
+.carrusel-pista {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.3, 0.7, 0.2, 1);
+}
+
+.slide {
+  flex: 0 0 100%;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  align-items: center;
+}
+
+.slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 12 / 7;
+  object-fit: cover;
+}
+
+.slide figcaption {
+  padding: 2rem clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.slide figcaption h3 {
+  font-size: 1.6rem;
+  color: var(--jade);
+}
+
+.carrusel-controles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.carrusel-flecha {
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  border: 1px solid var(--linea);
+  background: #fff;
+  color: var(--jade);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.carrusel-flecha:hover {
+  background: var(--lino);
+}
+
+.puntos {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.puntos button {
+  width: 0.7rem;
+  height: 0.7rem;
+  padding: 0;
+  border-radius: 999px;
+  border: 0;
+  background: var(--celeste);
+  cursor: pointer;
+  transition:
+    width 0.25s,
+    background 0.25s;
+}
+
+.puntos button[aria-current="true"] {
+  width: 1.8rem;
+  background: var(--jade);
+}
+
+.motivos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+
+.motivo {
+  background: #fff;
+  border-radius: var(--radio);
+  padding: 1.35rem 1.35rem 1.2rem;
+  border: 1px solid var(--linea);
+}
+
+.motivo .bi {
+  display: inline-grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 16px;
+  font-size: 1.45rem;
+  margin-bottom: 0.8rem;
+}
+
+.motivo:nth-child(3n + 1) .bi {
+  background: #d7ece9;
+  color: var(--jade);
+}
+
+.motivo:nth-child(3n + 2) .bi {
+  background: #dcefd7;
+  color: var(--hierba-texto);
+}
+
+.motivo:nth-child(3n + 3) .bi {
+  background: #d6edf7;
+  color: #12739a;
+}
+
+.motivo h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.3rem;
+}
+
+.motivo p {
+  margin: 0;
+  color: var(--tinta-suave);
+  font-size: 0.98rem;
+}
+
+.llamado {
+  text-align: center;
+  background: var(--jade);
+  color: #fff;
+  border-radius: 28px;
+  padding: clamp(2.25rem, 5vw, 3.25rem) 1.5rem;
+}
+
+.llamado h2 {
+  color: #fff;
+}
+
+.llamado p {
+  margin: 0 auto 0.5rem;
+  color: #d8f0ea;
+}
+
+.llamado .acciones {
+  justify-content: center;
+}
+
+.llamado .btn {
+  background: #fff;
+  color: var(--jade);
+  border-color: #fff;
+}
+
+.llamado .btn.claro {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.llamado .btn.claro:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.entrar {
+  text-align: center;
+  padding-top: 1rem;
+}
+
+.entrar > p {
+  margin: 0 auto 2rem;
+  color: var(--tinta-suave);
+}
+
+.caminos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  text-align: left;
+}
+
+.camino {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+  padding: 1.75rem;
+  border-radius: 26px;
+  text-decoration: none;
+  overflow: hidden;
+  animation: aparecer 0.55s cubic-bezier(0.2, 0.8, 0.2, 1.2) backwards;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1.3);
+}
+
+.camino:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.camino:nth-child(3) {
+  animation-delay: 0.24s;
+}
+
+.camino:hover,
+.camino:focus-visible {
+  transform: translateY(-8px) rotate(-1deg);
+}
+
+.camino > .bi {
+  font-size: 3rem;
+  margin-bottom: auto;
+  display: inline-block;
+}
+
+.camino strong {
+  display: block;
+  font: 600 1.7rem/1.15 var(--titulo);
+  margin: 1.5rem 0 0.4rem;
+}
+
+.camino span {
+  font-size: 1rem;
+}
+
+.camino .ir {
+  margin-top: 1.1rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.camino .ir .bi {
+  font-size: 1.4rem;
+}
+
+.camino::after {
+  content: "";
+  position: absolute;
+  right: -60px;
+  bottom: -60px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  transition: transform 0.4s;
+}
+
+.camino:hover::after {
+  transform: scale(1.35);
+}
+
+.camino.docente {
+  background: var(--jade);
+  color: #fff;
+}
+
+.camino.estudiante {
+  background: var(--aqua);
+  color: #08262f;
+}
+
+.camino.mercados {
+  background: var(--hierba);
+  color: #10290c;
+}
+
+.camino.docente:hover > .bi,
+.camino.docente:focus-visible > .bi {
+  animation: saludar 0.7s ease-in-out;
+}
+
+.camino.estudiante:hover > .bi,
+.camino.estudiante:focus-visible > .bi {
+  animation: rebotar 0.7s ease;
+}
+
+.camino.mercados:hover > .bi,
+.camino.mercados:focus-visible > .bi {
+  animation: girar 1s ease-in-out;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(26px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes saludar {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(-12deg);
+  }
+  75% {
+    transform: rotate(12deg);
+  }
+}
+
+@keyframes rebotar {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  35% {
+    transform: translateY(-14px);
+  }
+  65% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.entrar .secundario {
+  margin-top: 2rem;
+  font-size: 0.95rem;
+  color: var(--tinta-suave);
+}
+
+.devs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1.75rem 0;
+}
+
+.dev {
+  background: #fff;
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  padding: 1.4rem;
+  text-align: center;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  margin: 0 auto 0.8rem;
+  border-radius: 50%;
+  font: 600 1.4rem/1 var(--titulo);
+}
+
+.dev:nth-child(3n + 1) .avatar {
+  background: var(--jade);
+  color: #fff;
+}
+
+.dev:nth-child(3n + 2) .avatar {
+  background: var(--aqua);
+  color: #08262f;
+}
+
+.dev:nth-child(3n + 3) .avatar {
+  background: var(--hierba);
+  color: #10290c;
+}
+
+.dev h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.15rem;
+}
+
+.dev .rol {
+  color: var(--jade);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.dev p {
+  color: var(--tinta-suave);
+  font-size: 0.95rem;
+  margin: 0.5rem 0 0;
+}
+
+.curso {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  background: var(--lino);
+  border-radius: var(--radio);
+  padding: 1.1rem 1.35rem;
+}
+
+.curso .bi {
+  font-size: 1.8rem;
+  color: var(--jade);
+}
+
+.curso p {
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .motivos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .caminos {
+    grid-template-columns: 1fr;
+  }
+  .camino {
+    min-height: 0;
+  }
+  .camino > .bi {
+    margin-bottom: 0;
+  }
+  .slide {
+    grid-template-columns: 1fr;
+  }
+  .que-es {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .motivos {
+    grid-template-columns: 1fr;
+  }
+}

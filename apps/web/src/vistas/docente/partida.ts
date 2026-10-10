@@ -1,10 +1,17 @@
 // RF-03 crear partida, código de acceso (alias conectados) y RF-05 panel de la ronda.
-import { D, pais, producto } from "../datos";
-import { $, campo, ir, marcados } from "../dom";
-import { ALIAS_DEMO, EQUIPOS, estado, nuevaPartida, partidaActual, type Partida } from "../estado";
-import { EVENTOS, avisoEvento } from "../eventos";
-import { cerrarRonda, siguienteRonda } from "../simulacion";
-import { esc, mmss, usd } from "../formato";
+import { D, pais, producto } from "../../nucleo/datos";
+import { $, campo, ir, marcados } from "../../nucleo/dom";
+import {
+  ALIAS_DEMO,
+  EQUIPOS,
+  estado,
+  nuevaPartida,
+  partidaActual,
+  type Partida,
+} from "../../simulacion/estado";
+import { EVENTOS, avisoEvento } from "../../simulacion/eventos";
+import { cerrarRonda, siguienteRonda } from "../../simulacion/rondas";
+import { esc, mmss, usd } from "../../nucleo/formato";
 
 export function crearPartida(app: HTMLElement): void {
   const a = estado.asistente;
@@ -17,9 +24,19 @@ export function crearPartida(app: HTMLElement): void {
       ${campoNum("capital", "Capital inicial por equipo (USD)", a.capital, 1000, 1000000, "Mismo monto para todos los equipos.")}
     </div>`;
   } else if (a.paso === 2) {
-    cuerpo = grupoChips("pais", "Mercados disponibles en la partida", D.paises.map((p) => [p.iso, p.nombre]), a.paises);
+    cuerpo = grupoChips(
+      "pais",
+      "Mercados disponibles en la partida",
+      D.paises.map((p) => [p.iso, p.nombre]),
+      a.paises,
+    );
   } else {
-    cuerpo = grupoChips("prod", "Productos que podrán exportar", D.productos.map((p) => [p.id, p.nombre]), a.productos);
+    cuerpo = grupoChips(
+      "prod",
+      "Productos que podrán exportar",
+      D.productos.map((p) => [p.id, p.nombre]),
+      a.productos,
+    );
   }
 
   app.innerHTML = `
@@ -91,7 +108,12 @@ function campoNum(n: string, l: string, v: number, min: number, max: number, ayu
     <span class="ayuda">${ayuda}</span></div>`;
 }
 
-function grupoChips(grupo: string, leyenda: string, opciones: [string, string][], elegidos: string[]): string {
+function grupoChips(
+  grupo: string,
+  leyenda: string,
+  opciones: [string, string][],
+  elegidos: string[],
+): string {
   return `<fieldset class="campo"><legend>${leyenda}</legend><p class="ayuda">Elija al menos 2.</p><div class="chips">
     ${opciones
       .map(
@@ -131,7 +153,8 @@ export function codigoPartida(app: HTMLElement): void {
     }
   }, 900);
   $("equipos").addEventListener("click", () => {
-    if (Object.keys(p.integrantes).length < 2) for (const a of ALIAS_DEMO.slice(0, 8)) p.integrantes[a] ??= "";
+    if (Object.keys(p.integrantes).length < 2)
+      for (const a of ALIAS_DEMO.slice(0, 8)) p.integrantes[a] ??= "";
     ir("docente/equipos");
   });
 }
@@ -165,22 +188,24 @@ export function panelDocente(app: HTMLElement): void {
       </div>
       <div class="panel"><h2>Decisiones recibidas</h2><ul class="lista-equipos">
         ${p.equipos
-      .map(
-        (e, i) =>
-          `<li><span>Equipo ${esc(e)}</span><span>${p.rondaEstado === "espera"
-            ? "esperando inicio"
-            : p.rondaEstado === "cerrada" || i < 2
-              ? "registrada"
-              : "pendiente"
-          }</span></li>`,
-      )
-      .join("")}
+          .map(
+            (e, i) =>
+              `<li><span>Equipo ${esc(e)}</span><span>${
+                p.rondaEstado === "espera"
+                  ? "esperando inicio"
+                  : p.rondaEstado === "cerrada" || i < 2
+                    ? "registrada"
+                    : "pendiente"
+              }</span></li>`,
+          )
+          .join("")}
       </ul></div>
     </div>
     ${p.rondaEstado === "espera" ? selectorEvento(p) : avisoEvento(p.evento)}
     ${p.rondaEstado === "cerrada" ? tablaEquipos(p) : ""}`;
 
-  const accion = (id: string, fn: () => void): void => document.getElementById(id)?.addEventListener("click", fn);
+  const accion = (id: string, fn: () => void): void =>
+    document.getElementById(id)?.addEventListener("click", fn);
   app
     .querySelectorAll<HTMLInputElement>("input[name=evento]")
     .forEach((r) => r.addEventListener("change", () => (p.evento = r.value)));
@@ -247,10 +272,10 @@ function selectorEvento(p: Partida): string {
     <p class="ayuda">Elija un evento antes de iniciar. Los equipos lo verán como aviso al decidir.</p>
     <fieldset class="eventos"><legend class="sr-only">Evento de mercado</legend>
       ${EVENTOS.map(
-    (e) => `<label class="evento-opcion" for="evento-${e.id}">
+        (e) => `<label class="evento-opcion" for="evento-${e.id}">
           <input type="radio" name="evento" id="evento-${e.id}" value="${e.id}"${e.id === p.evento ? " checked" : ""}>
           <span><i class="bi ${e.icono}" aria-hidden="true"></i><strong>${esc(e.titulo)}</strong>${esc(e.descripcion)}</span>
         </label>`,
-  ).join("")}
+      ).join("")}
     </fieldset></section>`;
 }

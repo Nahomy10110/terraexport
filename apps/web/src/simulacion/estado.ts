@@ -2,7 +2,7 @@
 // (partida, ronda, equipos) y llegaría por WebSocket; aquí se simula en el navegador.
 // Al recargar la página se pierde: es una demo.
 import type { Calculo, Decision, IdProducto, IsoPais } from "@terraexport/motor";
-import { D } from "./datos";
+import { D } from "../nucleo/datos";
 
 export type EstadoRonda = "espera" | "activa" | "pausada" | "cerrada";
 
@@ -59,7 +59,20 @@ export const EQUIPOS = ["Ceiba", "Guanacaste", "Cenízaro", "Pochote", "Malinche
 export const EQUIPO_ESTUDIANTE = "Guanacaste";
 export const CODIGO_DEMO = "TRX4821";
 /** Alias de estudiantes "conectados" que simula la demo. */
-export const ALIAS_DEMO = ["Sofi", "Dani", "Mau", "Vale", "Andrés", "Fer", "Majo", "Luis", "Cami", "Joss", "Naty", "Pablo"];
+export const ALIAS_DEMO = [
+  "Sofi",
+  "Dani",
+  "Mau",
+  "Vale",
+  "Andrés",
+  "Fer",
+  "Majo",
+  "Luis",
+  "Cami",
+  "Joss",
+  "Naty",
+  "Pablo",
+];
 
 export const estado = {
   asistente: {

@@ -1,7 +1,7 @@
 // RF-06 ficha de país, con fuente y fecha de corte de cada dato (RNF-06).
 import type { IdProducto, IsoPais } from "@terraexport/motor";
-import { D, nombreFuente, pais, producto } from "../datos";
-import { esc, num, pct, usd } from "../formato";
+import { D, nombreFuente, pais, producto } from "../../nucleo/datos";
+import { esc, num, pct, usd } from "../../nucleo/formato";
 
 export function fichaHtml(iso: IsoPais, compacta: boolean, productoId?: IdProducto): string {
   const p = pais(iso);

@@ -1,0 +1,9 @@
+/* Estilos de TerraExport, divididos por sección. El orden importa: base primero. */
+@import "./base.css";
+@import "./componentes.css";
+@import "./inicio.css";
+@import "./mercados.css";
+@import "./docente.css";
+@import "./estudiante.css";
+@import "./ranking.css";
+@import "./recorrido.css";

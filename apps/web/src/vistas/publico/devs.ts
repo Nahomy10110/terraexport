@@ -1,5 +1,5 @@
 // "Conoce a los devs". Edite el arreglo EQUIPO con los nombres reales del grupo.
-import { esc } from "../formato";
+import { esc } from "../../nucleo/formato";
 
 const EQUIPO: { nombre: string; rol: string; frase: string }[] = [
   {
@@ -12,18 +12,9 @@ const EQUIPO: { nombre: string; rol: string; frase: string }[] = [
     rol: "Scrum Master",
     frase: "Mantiene al equipo enfocado en la meta.",
   },
-  { nombre: "Anthony Piña Sandoval",
-    rol: "Desarrollo", 
-    frase: "Validar funcionalidades." 
-  },
-  { nombre: "Isaac Aburto Torres", 
-    rol: "Desarrollo", 
-    frase: "Encargado del apartado de diseño."
-  },
-  { nombre: "Jafeth Peña Espinoza", 
-    rol: "Desarrollo", 
-    frase: "Logica de negocio en el sistema."
-  },
+  { nombre: "Anthony Piña Sandoval", rol: "Desarrollo", frase: "Validar funcionalidades." },
+  { nombre: "Isaac Aburto Torres", rol: "Desarrollo", frase: "Encargado del apartado de diseño." },
+  { nombre: "Jafeth Peña Espinoza", rol: "Desarrollo", frase: "Logica de negocio en el sistema." },
 ];
 
 const iniciales = (n: string): string =>

@@ -1,0 +1,249 @@
+/* docente.css: Crear partida, código, equipos (RF-04), panel con eventos (RF-13) y reporte (RF-15). */
+
+.codigo {
+  position: relative;
+  background: var(--superficie);
+  border: 2px solid var(--jade);
+  padding: 2.2rem 1.5rem 1.5rem;
+  text-align: center;
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.codigo::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 12px;
+  background: repeating-linear-gradient(-45deg, var(--hierba) 0 14px, var(--jade) 14px 28px);
+}
+
+.codigo .valor {
+  font: 700 clamp(3rem, 10vw, 5.5rem) / 1 var(--titulo);
+  letter-spacing: 0.06em;
+  margin: 0.5rem 0;
+  color: var(--jade);
+}
+
+.lista-equipos {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.lista-equipos li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.55rem 0.85rem;
+  background: var(--fondo);
+  border-radius: var(--radio-chico);
+}
+
+.reloj {
+  font: 700 clamp(3.5rem, 12vw, 6.5rem) / 1 var(--titulo);
+  font-variant-numeric: tabular-nums;
+  color: var(--jade);
+}
+
+.estado-ronda {
+  font-weight: 600;
+}
+
+.estado-ronda[data-estado="activa"] {
+  color: var(--utilidad);
+}
+
+.estado-ronda[data-estado="pausada"] {
+  color: #8a6a00;
+}
+
+.estado-ronda[data-estado="cerrada"] {
+  color: var(--perdida);
+}
+
+.eventos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+.evento-opcion {
+  position: relative;
+  cursor: pointer;
+}
+
+.evento-opcion input {
+  position: absolute;
+  opacity: 0;
+}
+
+.evento-opcion span {
+  display: grid;
+  gap: 0.25rem;
+  height: 100%;
+  padding: 0.9rem 1rem;
+  border: 1.5px solid var(--linea);
+  border-radius: var(--radio);
+  background: #fff;
+  color: var(--tinta-suave);
+  font-size: 0.92rem;
+}
+
+.evento-opcion .bi {
+  font-size: 1.4rem;
+  color: var(--aqua);
+}
+
+.evento-opcion strong {
+  color: var(--tinta);
+}
+
+.evento-opcion input:checked + span {
+  border-color: var(--jade);
+  background: #e6f2ef;
+}
+
+.evento-opcion input:focus-visible + span {
+  outline: 3px solid var(--aqua);
+  outline-offset: 2px;
+}
+
+.aviso-evento {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+  margin: 1rem 0;
+  padding: 1rem 1.2rem;
+  border-radius: var(--radio);
+  background: #e3f2f8;
+  border: 1.5px solid var(--celeste);
+}
+
+.aviso-evento > .bi {
+  font-size: 1.6rem;
+  color: #12739a;
+}
+
+.aviso-evento p {
+  margin: 0.2rem 0 0;
+}
+
+.aviso-evento.afecta {
+  background: #fff3e2;
+  border-color: #e9c48a;
+}
+
+.afecta-texto {
+  font-weight: 600;
+}
+
+.alias-conectados {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.alias-conectados li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  background: var(--fondo);
+}
+
+.alias-conectados .bi {
+  color: var(--aqua);
+}
+
+.equipos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.equipo-caja {
+  background: var(--fondo);
+  border-radius: var(--radio);
+  padding: 1rem;
+}
+
+.equipo-caja h3 {
+  font-size: 1.1rem;
+  color: var(--jade);
+}
+
+.equipo-caja ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.equipo-caja li {
+  display: grid;
+  grid-template-columns: 1fr 9rem;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.equipo-caja select {
+  padding: 0.35rem 0.5rem;
+}
+
+.reporte-encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.reporte-encabezado .acciones {
+  margin-top: 0;
+}
+
+.reporte h2 {
+  margin-top: 2rem;
+}
+
+.reporte-ronda {
+  margin-top: 1.25rem;
+  break-inside: avoid;
+}
+
+.reporte table {
+  background: #fff;
+}
+
+@media print {
+  .barra,
+  .pie,
+  .aviso,
+  .acciones,
+  .nota-proto,
+  .tour {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    font-size: 11pt;
+  }
+  main {
+    padding: 0;
+    max-width: none;
+  }
+  .dato {
+    border: 1px solid #ccc;
+  }
+  .tabla-scroll {
+    overflow: visible;
+  }
+}

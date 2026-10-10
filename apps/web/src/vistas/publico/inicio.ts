@@ -1,6 +1,6 @@
 // Página principal: qué es el prototipo, carrusel, motivos para jugar y las dos acciones.
-import { D } from "../datos";
-import { estado } from "../estado";
+import { D } from "../../nucleo/datos";
+import { estado } from "../../simulacion/estado";
 
 const DIAPOSITIVAS = [
   {

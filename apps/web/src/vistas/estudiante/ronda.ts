@@ -1,14 +1,21 @@
 // RF-02 ingreso, sala de espera, RF-08 decisión y RF-11 resultados.
 // El resultado sale de la ronda simulada (simulacion.ts), igual que el ranking y el reporte.
 import { calcular, type Decision, type MedioTransporte } from "@terraexport/motor";
-import { D, pais, producto, tieneDatos } from "../datos";
-import { $, campo, ir } from "../dom";
-import { CODIGO_DEMO, EQUIPO_ESTUDIANTE, asegurarEquipo, capitalDe, estado, partidaActual } from "../estado";
-import { afecta, avisoEvento, datosConEvento, evento, variacionPara } from "../eventos";
-import { escenarioPara } from "../choques";
-import { cerrarRonda, impactoChoque, resultadoDe, siguienteRonda } from "../simulacion";
-import { ent, esc, num, pct, usd } from "../formato";
-import { fichaHtml } from "./ficha";
+import { D, pais, producto, tieneDatos } from "../../nucleo/datos";
+import { $, campo, ir } from "../../nucleo/dom";
+import {
+  CODIGO_DEMO,
+  EQUIPO_ESTUDIANTE,
+  asegurarEquipo,
+  capitalDe,
+  estado,
+  partidaActual,
+} from "../../simulacion/estado";
+import { afecta, avisoEvento, datosConEvento, evento, variacionPara } from "../../simulacion/eventos";
+import { escenarioPara } from "../../simulacion/choques";
+import { cerrarRonda, impactoChoque, resultadoDe, siguienteRonda } from "../../simulacion/rondas";
+import { ent, esc, num, pct, usd } from "../../nucleo/formato";
+import { fichaHtml } from "../mercados/pais";
 
 export function ingresoEstudiante(app: HTMLElement): void {
   const esperado = estado.partida?.codigo ?? CODIGO_DEMO;
@@ -107,11 +114,11 @@ export function decision(app: HTMLElement): void {
           <a class="ayuda" id="ver-producto" href="#/producto/P01" hidden>Ver ficha del producto</a></div>
         <fieldset class="campo"><legend>Transporte</legend><div class="chips">
           ${(["Marítimo", "Aéreo"] as const)
-      .map(
-        (m) =>
-          `<label class="chip"><input type="radio" name="medio" value="${m}"${m === (d?.medio ?? "Marítimo") ? " checked" : ""}><span>${m}</span></label>`,
-      )
-      .join("")}
+            .map(
+              (m) =>
+                `<label class="chip"><input type="radio" name="medio" value="${m}"${m === (d?.medio ?? "Marítimo") ? " checked" : ""}><span>${m}</span></label>`,
+            )
+            .join("")}
         </div></fieldset>
         <div class="fila">
           <div class="campo"><label for="volumen">Volumen (unidades)</label>
@@ -198,7 +205,8 @@ export function decision(app: HTMLElement): void {
       return void (err.textContent = "El volumen debe ser un número entero mayor que 0.");
     if (!(dec.precio > 0)) return void (err.textContent = "El precio debe ser mayor que 0.");
     const r = calcular(datosRonda, dec);
-    if (!r.ok) return void (err.textContent = `Faltan datos para esta combinación: ${r.faltantes.join(", ")}.`);
+    if (!r.ok)
+      return void (err.textContent = `Faltan datos para esta combinación: ${r.faltantes.join(", ")}.`);
     if (r.costoTotal > capital)
       return void (err.textContent = `El costo puesto en destino (${usd(r.costoTotal)}) supera tu capital. Reduce el volumen o cambia el transporte.`);
 

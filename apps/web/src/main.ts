@@ -1,20 +1,20 @@
 import "bootstrap-icons/font/bootstrap-icons.css";
-import "./estilos.css";
-import { D } from "./datos";
-import { detenerReloj } from "./estado";
-import { pintarRecorrido, recorridoInicio } from "./recorrido";
-import { codigoPartida, crearPartida, panelDocente } from "./vistas/docente";
-import { devs } from "./vistas/devs";
-import { entrar } from "./vistas/entrar";
-import { conformarEquipos } from "./vistas/equipos";
-import { choqueCultural } from "./vistas/choque";
-import { decision, ingresoEstudiante, resultados, salaEspera } from "./vistas/estudiante";
-import { fichaPais } from "./vistas/ficha";
-import { fichaProducto } from "./vistas/producto";
-import { verRanking } from "./vistas/ranking";
-import { reporte } from "./vistas/reporte";
-import { inicio } from "./vistas/inicio";
-import { verificacion } from "./vistas/verificacion";
+import "./estilos/index.css";
+import { D } from "./nucleo/datos";
+import { detenerReloj } from "./simulacion/estado";
+import { pintarRecorrido, recorridoInicio } from "./vistas/presentacion/recorrido";
+import { codigoPartida, crearPartida, panelDocente } from "./vistas/docente/partida";
+import { devs } from "./vistas/publico/devs";
+import { entrar } from "./vistas/publico/entrar";
+import { conformarEquipos } from "./vistas/docente/equipos";
+import { choqueCultural } from "./vistas/estudiante/choque";
+import { decision, ingresoEstudiante, resultados, salaEspera } from "./vistas/estudiante/ronda";
+import { fichaPais } from "./vistas/mercados/pais";
+import { fichaProducto } from "./vistas/mercados/producto";
+import { verRanking } from "./vistas/compartido/ranking";
+import { reporte } from "./vistas/docente/reporte";
+import { inicio } from "./vistas/publico/inicio";
+import { verificacion } from "./vistas/compartido/verificacion";
 
 type Vista = (app: HTMLElement, partes: string[]) => void;
 
@@ -60,7 +60,7 @@ function render(): void {
   app!.className = "";
   vista(app!, partes);
   pintarRecorrido();
-  app!.focus();;
+  app!.focus();
   window.scrollTo(0, 0);
 }
 

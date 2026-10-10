@@ -1,7 +1,7 @@
 // Punto único de acceso a la muestra. La web nunca edita estos datos:
 // salen del Excel mediante scripts/excel_a_datos.py.
 import type { IdProducto, IsoPais, Muestra, Pais, Producto } from "@terraexport/motor";
-import muestra from "../../../datos/muestra.json";
+import muestra from "../../../../datos/muestra.json";
 
 export const D = muestra as Muestra;
 

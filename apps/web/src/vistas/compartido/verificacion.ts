@@ -1,7 +1,7 @@
 // RNF-05: la demo debe dar los mismos montos que la hoja de cálculo.
 import { calcular, type Resultado } from "@terraexport/motor";
-import { D, pais, producto } from "../datos";
-import { esc, usd } from "../formato";
+import { D, pais, producto } from "../../nucleo/datos";
+import { esc, usd } from "../../nucleo/formato";
 
 export function verificacion(app: HTMLElement): void {
   let coinciden = 0;
