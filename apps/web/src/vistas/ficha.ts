@@ -39,7 +39,7 @@ export function fichaHtml(iso: IsoPais, compacta: boolean, productoId?: IdProduc
         ? `<h3>Aranceles cargados</h3><ul>${aranceles
             .map(
               (a) =>
-                `<li>${esc(producto(a.producto).nombre)}: ${pct(a.pct)} <span class="fuente">(${esc(nombreFuente(a.fuente))}, ${esc(a.estado.toLowerCase())})</span></li>`,
+                `<li><a href="#/producto/${a.producto}">${esc(producto(a.producto).nombre)}</a>: ${pct(a.pct)} <span class="fuente">(${esc(nombreFuente(a.fuente))}, ${esc(a.estado.toLowerCase())})</span></li>`,
             )
             .join("")}</ul>`
         : ""

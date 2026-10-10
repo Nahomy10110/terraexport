@@ -9,6 +9,7 @@ import { conformarEquipos } from "./vistas/equipos";
 import { choqueCultural } from "./vistas/choque";
 import { decision, ingresoEstudiante, resultados, salaEspera } from "./vistas/estudiante";
 import { fichaPais } from "./vistas/ficha";
+import { fichaProducto } from "./vistas/producto";
 import { inicio } from "./vistas/inicio";
 import { verificacion } from "./vistas/verificacion";
 
@@ -28,12 +29,13 @@ const rutas: Record<string, Vista> = {
   "estudiante/choque": choqueCultural,
   "estudiante/resultados": resultados,
   pais: fichaPais,
+  producto: fichaProducto,
   verificacion,
 };
 
 // Rutas con un parámetro al final, por ejemplo #/pais/JPN o #/producto/P04.
 // Para agregar una nueva, ponga aquí su primera parte y regístrela en `rutas` con esa misma clave.
-const RUTAS_CON_PARAMETRO = new Set(["pais"]);
+const RUTAS_CON_PARAMETRO = new Set(["pais", "producto"]);
 
 const app = document.getElementById("app");
 if (!app) throw new Error("Falta el contenedor #app");
