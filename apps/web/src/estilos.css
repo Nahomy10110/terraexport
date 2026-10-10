@@ -1076,10 +1076,30 @@ th.num {
 .alias-conectados li { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.35rem 0.8rem; border-radius: 999px; background: var(--fondo); }
 .alias-conectados .bi { color: var(--aqua); }
 
-/* Conformar equipos (RF-04) */
+/* Conformar equipos*/
 .equipos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 0.5rem; }
 .equipo-caja { background: var(--fondo); border-radius: var(--radio); padding: 1rem; }
 .equipo-caja h3 { font-size: 1.1rem; color: var(--jade); }
 .equipo-caja ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.4rem; }
 .equipo-caja li { display: grid; grid-template-columns: 1fr 9rem; gap: 0.5rem; align-items: center; }
 .equipo-caja select { padding: 0.35rem 0.5rem; }
+
+/* Choque cultural (RF-14) */
+.choque { max-width: 760px; margin: 0 auto; }
+.choque-dim { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.35rem 0.9rem; border-radius: 999px; background: #dcefd7; color: var(--hierba-texto); font-size: 0.92rem; }
+.choque-situacion { font-size: 1.2rem; }
+.opcion-choque { position: relative; display: block; margin-bottom: 0.6rem; cursor: pointer; }
+.opcion-choque input { position: absolute; opacity: 0; }
+.opcion-choque span { display: block; padding: 0.95rem 1.1rem; border: 1.5px solid var(--linea); border-radius: var(--radio); background: #fff; }
+.opcion-choque input:checked + span { border-color: var(--jade); background: #e6f2ef; }
+.opcion-choque input:focus-visible + span { outline: 3px solid var(--aqua); outline-offset: 2px; }
+.opcion-choque.correcta span,
+.opcion-choque.correcta input:checked + span { border-color: var(--hierba); background: #e7f4e3; }
+.opcion-choque.elegida span,
+.opcion-choque.elegida input:checked + span { border-color: var(--perdida); background: #fbeceb; }
+fieldset:disabled .opcion-choque { cursor: default; }
+.retro { margin-top: 1rem; padding: 1rem 1.2rem; border-radius: var(--radio); border-left: 5px solid var(--linea); background: #fff; }
+.retro p { margin: 0.3rem 0 0; }
+.retro.bien { border-left-color: var(--hierba); }
+.retro.mal-retro { border-left-color: var(--perdida); }
+.retro.neutra { border-left-color: var(--aqua); }

@@ -6,6 +6,7 @@ import { codigoPartida, crearPartida, panelDocente } from "./vistas/docente";
 import { devs } from "./vistas/devs";
 import { entrar } from "./vistas/entrar";
 import { conformarEquipos } from "./vistas/equipos";
+import { choqueCultural } from "./vistas/choque";
 import { decision, ingresoEstudiante, resultados, salaEspera } from "./vistas/estudiante";
 import { fichaPais } from "./vistas/ficha";
 import { inicio } from "./vistas/inicio";
@@ -24,6 +25,7 @@ const rutas: Record<string, Vista> = {
   estudiante: ingresoEstudiante,
   "estudiante/espera": salaEspera,
   "estudiante/decision": decision,
+  "estudiante/choque": choqueCultural,
   "estudiante/resultados": resultados,
   pais: fichaPais,
   verificacion,
