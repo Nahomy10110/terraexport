@@ -20,3 +20,8 @@ export function marcados(form: HTMLFormElement, nombre: string): string[] {
 export function ir(ruta: string): void {
   location.hash = `#/${ruta}`;
 }
+
+/** Botón "Volver" con ícono. Lo maneja un solo listener en main.ts (atributo data-volver). */
+export function botonVolver(texto = "Volver"): string {
+  return `<button type="button" class="btn claro chico btn-volver" data-volver><i class="bi bi-arrow-left" aria-hidden="true"></i>${texto}</button>`;
+}

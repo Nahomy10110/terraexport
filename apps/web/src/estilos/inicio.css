@@ -450,8 +450,9 @@
 }
 
 .devs {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
   margin: 1.75rem 0;
 }
@@ -462,6 +463,8 @@
   border-radius: var(--radio);
   padding: 1.4rem;
   text-align: center;
+  flex: 1 1 200px;
+  max-width: 240px;
 }
 
 .avatar {

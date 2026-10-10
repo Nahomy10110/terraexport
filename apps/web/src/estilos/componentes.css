@@ -135,7 +135,7 @@ fieldset {
 
 .datos-clave {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: 1rem;
   margin: 1rem 0;
 }
@@ -223,5 +223,39 @@ td .mal {
 
 td.num,
 th.num {
+  white-space: nowrap;
+}
+
+/* Botón Volver y banderas */
+.btn-volver {
+  margin-bottom: 1rem;
+}
+.bandera {
+  width: 1.5em;
+  height: 1.125em;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px rgba(18, 48, 43, 0.12);
+  object-fit: cover;
+  vertical-align: -0.15em;
+  flex-shrink: 0;
+}
+.bandera.grande {
+  width: 1.2em;
+  height: 0.9em;
+}
+.con-bandera {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+h1.con-bandera,
+h2.con-bandera {
+  display: flex;
+}
+.chip span .bandera {
+  margin-right: 0.4rem;
+}
+.dato .n {
+  font-size: clamp(1.1rem, 1.6vw, 1.45rem);
   white-space: nowrap;
 }

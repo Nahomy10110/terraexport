@@ -39,7 +39,7 @@ export function reporte(app: HTMLElement): void {
         </div>
         <div class="acciones">
           <button class="btn" id="imprimir"><i class="bi bi-printer" aria-hidden="true"></i>Imprimir reporte</button>
-          <a class="btn claro" href="#/docente/panel">Volver al panel</a>
+          <a class="btn claro" href="#/docente/panel"><i class="bi bi-arrow-left" aria-hidden="true"></i>Volver al panel</a>
         </div>
       </header>
 

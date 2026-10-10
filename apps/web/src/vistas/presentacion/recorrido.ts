@@ -237,7 +237,7 @@ export function recorridoInicio(app: HTMLElement): void {
     <ol class="tour-lista">${PASOS.map((p) => `<li><strong>${esc(p.titulo)}</strong><span>${esc(p.guion)}</span></li>`).join("")}</ol>
     <div class="acciones">
       <button class="btn" id="empezar"><i class="bi bi-play-fill" aria-hidden="true"></i>Empezar recorrido</button>
-      <a class="btn claro" href="#/entrar">Volver</a>
+      <a class="btn claro" href="#/entrar"><i class="bi bi-arrow-left" aria-hidden="true"></i>Volver</a
     </div>`;
   document.getElementById("empezar")?.addEventListener("click", iniciarRecorrido);
 }

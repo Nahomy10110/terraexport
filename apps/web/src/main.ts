@@ -59,6 +59,7 @@ function render(): void {
   detenerReloj();
   app!.className = "";
   vista(app!, partes);
+  marcarMenu(hash);
   pintarRecorrido();
   app!.focus();
   window.scrollTo(0, 0);
@@ -76,6 +77,25 @@ function avisoDatos(): void {
   const pie = document.getElementById("pie-generado");
   if (pie) pie.textContent = ` ${D.generado}.`;
 }
+
+/** Marca en la barra superior el enlace de la sección actual. */
+function marcarMenu(hash: string): void {
+  document.querySelectorAll<HTMLAnchorElement>(".barra-nav a").forEach((a) => {
+    const destino = a.getAttribute("href")?.replace(/^#\/?/, "") ?? "";
+    const seccion = destino.split("/")[0] ?? "";
+    const activo = destino === "" ? hash === "" : hash.split("/")[0] === seccion;
+    if (activo) a.setAttribute("aria-current", "page");
+    else a.removeAttribute("aria-current");
+  });
+}
+
+// Todos los botones "Volver" (data-volver): regresan a la pantalla anterior o al inicio.
+document.addEventListener("click", (e) => {
+  const boton = (e.target as HTMLElement).closest("[data-volver]");
+  if (!boton) return;
+  if (history.length > 1) history.back();
+  else location.hash = "#/";
+});
 
 window.addEventListener("hashchange", render);
 avisoDatos();

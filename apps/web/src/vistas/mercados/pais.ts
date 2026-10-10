@@ -1,6 +1,8 @@
-// RF-06 ficha de país, con fuente y fecha de corte de cada dato (RNF-06).
+// Ficha de país, con fuente y fecha de corte de cada dato.
 import type { IdProducto, IsoPais } from "@terraexport/motor";
 import { D, nombreFuente, pais, producto } from "../../nucleo/datos";
+import { bandera } from "../../nucleo/banderas";
+import { botonVolver } from "../../nucleo/dom";
 import { esc, num, pct, usd } from "../../nucleo/formato";
 
 export function fichaHtml(iso: IsoPais, compacta: boolean, productoId?: IdProducto): string {
@@ -20,7 +22,7 @@ export function fichaHtml(iso: IsoPais, compacta: boolean, productoId?: IdProduc
   const dato = (n: string, l: string, f: string): string =>
     `<div class="dato"><div class="n">${n}</div><div class="l">${l}</div><div class="fuente">${f}</div></div>`;
 
-  return `${compacta ? `<h2>${esc(p.nombre)}</h2>` : ""}
+  return `${compacta ? `<h2 class="con-bandera">${bandera(iso)}${esc(p.nombre)}</h2>` : ""}
     <div class="datos-clave">
       ${dato(`${num(p.unidadesPorUsd)} ${p.codigoMoneda}`, "por 1 USD", `${esc(nombreFuente(p.fuenteTc))}, ${p.fechaCorte}`)}
       ${arSel && productoId ? dato(pct(arSel.pct), `arancel a ${esc(producto(productoId).nombre.toLowerCase())}`, `${esc(nombreFuente(arSel.fuente))}, ${arSel.fechaCorte}`) : ""}
@@ -29,7 +31,7 @@ export function fichaHtml(iso: IsoPais, compacta: boolean, productoId?: IdProduc
           dato(
             `${usd(r.fletePorKg)}/kg`,
             `flete ${r.medio.toLowerCase()}, ${r.diasTransito} días, seguro ${pct(r.pctSeguro, 2)}`,
-            `${esc(nombreFuente(r.fuente))} (${esc(r.estado.toLowerCase())})`,
+            esc(nombreFuente(r.fuente)),
           ),
         )
         .join("")}
@@ -57,19 +59,18 @@ export function fichaHtml(iso: IsoPais, compacta: boolean, productoId?: IdProduc
 export function fichaPais(app: HTMLElement, partes: string[]): void {
   const iso = partes[1] ?? D.paises[0]?.iso ?? "USA";
   if (!D.paises.some((p) => p.iso === iso)) {
-    app.innerHTML =
-      '<div class="panel"><h1>Ese país no está en la muestra</h1><p><a href="#/">Volver al inicio</a></p></div>';
+    app.innerHTML = `<div class="panel"><h1>Ese país no está en la muestra</h1><div class="acciones">${botonVolver("Volver al inicio")}</div></div>`;
     return;
   }
   app.innerHTML = `
-    <p><a href="javascript:history.back()">Volver</a></p>
-    <h1>${esc(pais(iso).nombre)}</h1>
+    ${botonVolver()}
+    <h1 class="con-bandera">${bandera(iso, true)}${esc(pais(iso).nombre)}</h1>
     <div class="dos-col"><div class="panel">${fichaHtml(iso, false)}</div>
       <nav class="panel" aria-label="Otros países"><h2>Otros mercados</h2><ul class="lista-equipos">
         ${D.paises
           .map(
             (p) =>
-              `<li><a href="#/pais/${p.iso}"${p.iso === iso ? ' aria-current="page"' : ""}>${esc(p.nombre)}</a><span>${p.codigoMoneda}</span></li>`,
+              `<li><a class="con-bandera" href="#/pais/${p.iso}"${p.iso === iso ? ' aria-current="page"' : ""}>${bandera(p.iso)}${esc(p.nombre)}</a><span>${p.codigoMoneda}</span></li>`,
           )
           .join("")}
       </ul></nav>

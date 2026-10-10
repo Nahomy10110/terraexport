@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@terraexport/motor": "0.2.0",
-    "bootstrap-icons": "1.11.3"
+    "bootstrap-icons": "1.11.3",
+    "flag-icons": "7.5.0"
   },
   "devDependencies": {
     "vite": "5.4.11"

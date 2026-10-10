@@ -7,8 +7,8 @@ export function verRanking(app: HTMLElement): void {
   const p = partidaActual();
   const s = estado.estudiante;
   const volver = s
-    ? '<a class="btn claro" href="#/estudiante/resultados">Ver mis resultados</a>'
-    : '<a class="btn claro" href="#/docente/panel">Volver al panel</a>';
+    ? '<a class="btn claro" href="#/estudiante/resultados"><i class="bi bi-arrow-left" aria-hidden="true"></i>Ver mis resultados</a>'
+    : '<a class="btn claro" href="#/docente/panel"><i class="bi bi-arrow-left" aria-hidden="true"></i>Volver al panel</a>';
 
   if (!p.historial.length) {
     app.innerHTML = `<div class="panel"><h1>Ranking</h1>

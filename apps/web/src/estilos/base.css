@@ -122,18 +122,44 @@ a {
 
 .barra-nav {
   display: flex;
-  gap: 1.5rem;
+  gap: 0.35rem;
   margin: 0 auto;
 }
 
 .barra-nav a {
-  color: var(--tinta-suave);
-  text-decoration: none;
-  font-weight: 500;
+  position: relative;
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
-
-.barra-nav a:hover {
+.barra-nav a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0.2rem;
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--hierba);
+  transition:
+    width 0.25s,
+    left 0.25s;
+}
+.barra-nav a:hover,
+.barra-nav a:focus-visible {
   color: var(--jade);
+  background: #e6f2ef;
+}
+.barra-nav a:hover::after,
+.barra-nav a[aria-current="page"]::after {
+  left: 0.95rem;
+  width: calc(100% - 1.9rem);
+}
+.barra-nav a[aria-current="page"] {
+  color: var(--jade);
+  font-weight: 600;
 }
 
 .barra-acciones {

@@ -1,12 +1,13 @@
 // RF-07 ficha de producto, con fuente y estado del dato (RNF-06).
 import { D, nombreFuente, pais, producto, tieneDatos } from "../../nucleo/datos";
+import { bandera } from "../../nucleo/banderas";
+import { botonVolver } from "../../nucleo/dom";
 import { esc, num, pct, usd } from "../../nucleo/formato";
 
 export function fichaProducto(app: HTMLElement, partes: string[]): void {
   const id = partes[1] ?? D.productos[0]?.id ?? "P01";
   if (!D.productos.some((p) => p.id === id)) {
-    app.innerHTML =
-      '<div class="panel"><h1>Ese producto no está en la muestra</h1><p><a href="#/">Volver al inicio</a></p></div>';
+    app.innerHTML = `<div class="panel"><h1>Ese producto no está en la muestra</h1><div class="acciones">${botonVolver("Volver al inicio")}</div></div>`;
     return;
   }
   const p = producto(id);
@@ -18,7 +19,7 @@ export function fichaProducto(app: HTMLElement, partes: string[]): void {
       const ar = D.aranceles.find((a) => a.iso === x.iso && a.producto === id);
       const dem = D.demanda.find((d) => d.iso === x.iso && d.producto === id);
       return `<tr>
-        <td><a href="#/pais/${x.iso}">${esc(x.nombre)}</a></td>
+        <td><a class="con-bandera" href="#/pais/${x.iso}">${bandera(x.iso)}${esc(x.nombre)}</a></td>
         <td class="num">${ar ? pct(ar.pct) : "—"}</td>
         <td class="num">${dem ? usd(dem.precioReferencia) : "—"}</td>
         <td class="fuente">${ar ? esc(nombreFuente(ar.fuente)) : ""}</td>
@@ -27,7 +28,7 @@ export function fichaProducto(app: HTMLElement, partes: string[]): void {
     .join("");
 
   app.innerHTML = `
-    <p><a href="javascript:history.back()">Volver</a></p>
+    ${botonVolver()}
     <h1>${esc(p.nombre)}</h1>
     <div class="dos-col">
       <div class="panel">

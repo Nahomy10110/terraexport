@@ -49,6 +49,6 @@ export function devs(app: HTMLElement): void {
     </div>
     <div class="acciones">
       <a class="btn" href="#/entrar"><i class="bi bi-play-fill" aria-hidden="true"></i>Iniciar sesión</a>
-      <a class="btn claro" href="#/">Volver al inicio</a>
+      <a class="btn claro" href="#/	"><i class="bi bi-arrow-left" aria-hidden="true"></i>Volver al inicio</a>
     </div>`;
 }

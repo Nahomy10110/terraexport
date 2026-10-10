@@ -11,6 +11,7 @@ import {
 } from "../../simulacion/estado";
 import { EVENTOS, avisoEvento } from "../../simulacion/eventos";
 import { cerrarRonda, siguienteRonda } from "../../simulacion/rondas";
+import { bandera } from "../../nucleo/banderas";
 import { esc, mmss, usd } from "../../nucleo/formato";
 
 export function crearPartida(app: HTMLElement): void {
@@ -29,6 +30,7 @@ export function crearPartida(app: HTMLElement): void {
       "Mercados disponibles en la partida",
       D.paises.map((p) => [p.iso, p.nombre]),
       a.paises,
+      (iso) => bandera(iso),
     );
   } else {
     cuerpo = grupoChips(
@@ -113,12 +115,13 @@ function grupoChips(
   leyenda: string,
   opciones: [string, string][],
   elegidos: string[],
+  icono: (valor: string) => string = () => "",
 ): string {
   return `<fieldset class="campo"><legend>${leyenda}</legend><p class="ayuda">Elija al menos 2.</p><div class="chips">
     ${opciones
       .map(
         ([v, t]) =>
-          `<label class="chip"><input type="checkbox" name="${grupo}" value="${v}"${elegidos.includes(v) ? " checked" : ""}><span>${esc(t)}</span></label>`,
+          `<label class="chip"><input type="checkbox" name="${grupo}" value="${v}"${elegidos.includes(v) ? " checked" : ""}><span>${icono(v)}${esc(t)}</span></label>`,
       )
       .join("")}</div></fieldset>`;
 }
